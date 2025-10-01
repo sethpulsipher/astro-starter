@@ -6,10 +6,6 @@ export default defineConfig({
   site: "https://www.yourwebsite.com", // ToDo: update me!
   integrations: [
     icon(),
-    sitemap({
-      filter: (page) => !page.includes("/admin"),
-      changefreq: "weekly",
-      priority: 0.7,
-    }),
+    sitemap(),
   ],
 });
