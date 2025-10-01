@@ -11,5 +11,8 @@
 		"zip": "84067",
 		"mapLink": "https://goo.gl/maps/UAQn4vuGDiwv7DV39"
 	},
+	"socials": {
+		"facebook": "https://www.facebook.com/profile.php?id=example"
+	},
 	"domain": "www.example.com"
 }

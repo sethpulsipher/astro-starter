@@ -4,35 +4,32 @@ import CTA from "@components/CTA.astro";
 import Landing from "@components/Landing.astro";
 
 // Optimize our landing image and pass it as props to the BaseLayout (for preloading) and Landing (for rendering)
-import landingImage from "@assets/images/landing.jpg" // <-- THE PATH TO THE ASSET YOU WANT TO PRELOAD - The asset must live in src
+import landingImage from "@assets/images/landing.jpg"; // <-- THE PATH TO THE ASSET YOU WANT TO PRELOAD - The asset must live in src
 import { getImage } from "astro:assets";
-const optimizedImage = await getImage({src: landingImage, format: 'avif'})
+const optimizedImage = await getImage({ src: landingImage, format: "avif" });
 ---
 
 <BaseLayout
   title="Projects"
   description="Meta description for the page"
-  preloadedImage = {optimizedImage}
+  preloadedImage={optimizedImage}
 >
   <!-- ============================================ -->
   <!--                    LANDING                   -->
   <!-- ============================================ -->
 
-  <Landing 
-    title="Project 2"
-    image={optimizedImage}
-  />
+  <Landing title="Project 2" image={optimizedImage} />
 
   <!-- ============================================ -->
   <!--                   Gallery                    -->
   <!-- ============================================ -->
 
   <section id="gallery">
-    <div class="cs-container">
-      <div class="cs-image-group">
+    <div class="container">
+      <div class="image-group">
         <!-- Row 1-->
-        <div class="cs-row cs-row-1">
-          <picture class="cs-picture cs-picture1">
+        <div class="row row-1">
+          <picture class="picture picture1">
             <source
               media="(max-width: 600px)"
               srcset="/assets/images/portfolio/port1-m.jpg"
@@ -51,7 +48,7 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
               height="560"
             />
           </picture>
-          <picture class="cs-picture cs-picture2">
+          <picture class="picture picture2">
             <source
               media="(max-width: 600px)"
               srcset="/assets/images/portfolio/port4-m.jpg"
@@ -70,7 +67,7 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
               height="560"
             />
           </picture>
-          <picture class="cs-picture cs-picture3">
+          <picture class="picture picture3">
             <source
               media="(max-width: 600px)"
               srcset="/assets/images/portfolio/port7-m.jpg"
@@ -89,11 +86,11 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
               height="560"
             />
           </picture>
-          <!-- To add more images, copy and paste this row's picture tags here in order from cs-picture-1 to cs-picture-3 and they will maintain the same layout-->
+          <!-- To add more images, copy and paste this row's picture tags here in order from picture-1 to picture-3 and they will maintain the same layout-->
         </div>
         <!-- Row 2 -->
-        <div class="cs-row cs-row-2">
-          <picture class="cs-picture cs-picture1">
+        <div class="row row-2">
+          <picture class="picture picture1">
             <source
               media="(max-width: 600px)"
               srcset="/assets/images/portfolio/port2-m.jpg"
@@ -112,7 +109,7 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
               height="560"
             />
           </picture>
-          <picture class="cs-picture cs-picture2">
+          <picture class="picture picture2">
             <source
               media="(max-width: 600px)"
               srcset="/assets/images/portfolio/port5-m.jpg"
@@ -131,7 +128,7 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
               height="560"
             />
           </picture>
-          <picture class="cs-picture cs-picture3">
+          <picture class="picture picture3">
             <source
               media="(max-width: 600px)"
               srcset="/assets/images/portfolio/port8-m.jpg"
@@ -150,11 +147,11 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
               height="560"
             />
           </picture>
-          <!-- To add more images, copy and paste this row's picture tags here in order from cs-picture-1 to cs-picture-3 and they will maintain the same layout-->
+          <!-- To add more images, copy and paste this row's picture tags here in order from picture-1 to picture-3 and they will maintain the same layout-->
         </div>
         <!-- Row 3 -->
-        <div class="cs-row cs-row-3">
-          <picture class="cs-picture cs-picture1">
+        <div class="row row-3">
+          <picture class="picture picture1">
             <source
               media="(max-width: 600px)"
               srcset="/assets/images/portfolio/port3-m.jpg"
@@ -173,7 +170,7 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
               height="560"
             />
           </picture>
-          <picture class="cs-picture cs-picture2">
+          <picture class="picture picture2">
             <source
               media="(max-width: 600px)"
               srcset="/assets/images/portfolio/port6-m.jpg"
@@ -192,7 +189,7 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
               height="560"
             />
           </picture>
-          <picture class="cs-picture cs-picture3">
+          <picture class="picture picture3">
             <source
               media="(max-width: 600px)"
               srcset="/assets/images/portfolio/port9-m.jpg"
@@ -212,10 +209,10 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
             />
           </picture>
 
-          <!-- To add more images, copy and paste this row's picture tags here in order from cs-picture-1 to cs-picture-3 and they will maintain the same layout-->
+          <!-- To add more images, copy and paste this row's picture tags here in order from picture-1 to picture-3 and they will maintain the same layout-->
         </div>
       </div>
-      <a href="/contact" class="cs-button-solid">Get Free Quote</a>
+      <a href="/contact" class="button-solid">Get Free Quote</a>
     </div>
   </section>
   <CTA />
@@ -237,13 +234,13 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
       position: relative;
       /* Prevents overflow from the image going off screen */
       overflow: hidden;
-      .cs-container {
+      .container {
         width: 100%;
         max-width: (1322/16em);
         margin: auto;
       }
 
-      .cs-image-group {
+      .image-group {
         /* used rem so it doesn't scale with the font size of on parent */
         font-size: ~"min(1.1vw, 1em)";
         width: 100%;
@@ -256,7 +253,7 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
         gap: (30/16em);
       }
 
-      .cs-row {
+      .row {
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
@@ -264,7 +261,7 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
         gap: (30/16em);
       }
 
-      .cs-picture {
+      .picture {
         display: block;
         position: relative;
         img {
@@ -277,52 +274,52 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
         }
       }
 
-      .cs-row-1 {
-        .cs-picture1 {
+      .row-1 {
+        .picture1 {
           width: (420/16em);
           height: (567/16em);
         }
 
-        .cs-picture2 {
+        .picture2 {
           width: (420/16em);
           height: (629/16em);
         }
 
-        .cs-picture3 {
+        .picture3 {
           width: (420/16em);
           height: (512/16em);
         }
       }
 
-      .cs-row-2 {
-        .cs-picture1 {
+      .row-2 {
+        .picture1 {
           width: (420/16em);
           height: (492/16em);
         }
 
-        .cs-picture2 {
+        .picture2 {
           width: (420/16em);
           height: (517/16em);
         }
 
-        .cs-picture3 {
+        .picture3 {
           width: (420/16em);
           height: (629/16em);
         }
       }
 
-      .cs-row-3 {
-        .cs-picture1 {
+      .row-3 {
+        .picture1 {
           width: (420/16em);
           height: (625/16em);
         }
 
-        .cs-picture2 {
+        .picture2 {
           width: (420/16em);
           height: (452/16em);
         }
 
-        .cs-picture3 {
+        .picture3 {
           width: (420/16em);
           height: (629/16em);
         }

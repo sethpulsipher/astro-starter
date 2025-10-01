@@ -5,34 +5,31 @@ import Landing from "@components/Landing.astro";
 import FAQ from "@components/FAQ.astro";
 
 // Optimize our landing image and pass it as props to the BaseLayout (for preloading) and Landing (for rendering)
-import landingImage from "@assets/images/landing.jpg" // <-- THE PATH TO THE ASSET YOU WANT TO PRELOAD - The asset must live in src
+import landingImage from "@assets/images/landing.jpg"; // <-- THE PATH TO THE ASSET YOU WANT TO PRELOAD - The asset must live in src
 import { getImage } from "astro:assets";
-const optimizedImage = await getImage({src: landingImage, format: 'avif'})
+const optimizedImage = await getImage({ src: landingImage, format: "avif" });
 ---
 
 <BaseLayout
   title="About"
   description="Meta description for the page"
-  preloadedImage = {optimizedImage}
+  preloadedImage={optimizedImage}
 >
   <!-- ============================================ -->
   <!--                    LANDING                   -->
   <!-- ============================================ -->
 
-  <Landing 
-    title="About Us"
-    image={optimizedImage}
-  />
+  <Landing title="About Us" image={optimizedImage} />
 
   <!-- ============================================ -->
   <!--                 Side By Side                 -->
   <!-- ============================================ -->
 
   <section id="sbs">
-    <div class="cs-container">
+    <div class="container">
       <!-- Left Image Section -->
-      <div class="cs-left">
-        <picture class="cs-picture cs-picture1">
+      <div class="left">
+        <picture class="picture picture1">
           <source
             media="(max-width: 600px)"
             srcset="/assets/images/cabinets2-m.jpg"
@@ -51,7 +48,7 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
             height="563"
           />
         </picture>
-        <picture class="cs-picture cs-picture2">
+        <picture class="picture picture2">
           <source
             media="(max-width: 600px)"
             srcset="/assets/images/construction-m.jpg"
@@ -72,30 +69,30 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
         </picture>
       </div>
       <!-- Right Content Section-->
-      <div class="cs-right">
-        <span class="cs-topper">About Us</span>
-        <h2 class="cs-title">About Company Title</h2>
-        <p class="cs-text">
+      <div class="right">
+        <span class="topper">About Us</span>
+        <h2 class="title">About Company Title</h2>
+        <p class="text">
           In consequat tincidunt turpis sit amet imperdiet. Praesent Class
           officelan nonatoureanor mauris laoreet, iaculis libero quis. Curabitur
           et tempus eri consequat tincidunt turpis sit amet imperdiet. Praesent
           nonatourean olei aptent taciti sociosqu ad litora torquent per.
         </p>
-        <p class="cs-text">
+        <p class="text">
           In consequat tincidunt turpis sit amet imperdiet. Praesent Class
           officelan nonatoureanor mauris laoreet, iaculis libero quis. Curabitur
           et tempus eri consequat tincidunt turpis sit amet imperdiet. Praesent
           nonatourean olei aptent taciti sociosqu ad litora torquent per.
         </p>
-        <div class="cs-flex-group">
-          <p class="cs-flex-p">
+        <div class="flex-group">
+          <p class="flex-p">
             In consequat tincidunt turpis sit amet imperdiet. Praesent Classei
             consequat tincidunt turpis sit amet imperdiet for mind.
           </p>
-          <span class="cs-name">Justin Time</span>
-          <span class="cs-job">CEO-Founder</span>
+          <span class="name">Justin Time</span>
+          <span class="job">CEO-Founder</span>
           <img
-            class="cs-quote-icon"
+            class="quote-icon"
             loading="lazy"
             decoding="async"
             src="https://csimg.nyc3.digitaloceanspaces.com/SideBySide/quote-white.svg"
@@ -104,7 +101,7 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
             height="77"
           />
         </div>
-        <a href="/projects" class="cs-button-solid">Our Projects</a>
+        <a href="/projects" class="button-solid">Our Projects</a>
       </div>
     </div>
   </section>
@@ -124,7 +121,7 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
     #sbs {
       padding: var(--sectionPadding);
 
-      .cs-container {
+      .container {
         width: 100%;
         max-width: (1280/16rem);
         margin: auto;
@@ -135,7 +132,7 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
         row-gap: (40/16rem);
       }
 
-      .cs-left {
+      .left {
         /* scaling the font size with the view width */
         font-size: ~"min(2.31vw, .7em)";
         /* using ems so we can use font size to scale the whole section */
@@ -144,7 +141,7 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
         position: relative;
       }
 
-      .cs-picture {
+      .picture {
         border-radius: (24/16em);
         display: block;
         position: absolute;
@@ -161,14 +158,14 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
         }
       }
 
-      .cs-picture1 {
+      .picture1 {
         width: (522/16em);
         height: (581/16em);
         top: 0;
         left: 0;
       }
 
-      .cs-picture2 {
+      .picture2 {
         width: (414/16em);
         height: (400/16em);
         background-color: #fff;
@@ -179,22 +176,22 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
         bottom: 0;
       }
 
-      .cs-right {
+      .right {
         max-width: (542/16rem);
         margin: auto;
       }
 
-      .cs-topper {
+      .topper {
         text-align: left;
         margin-bottom: (4/16rem);
       }
 
-      .cs-title {
+      .title {
         text-align: left;
         max-width: (800/16rem);
       }
 
-      .cs-text {
+      .text {
         text-align: left;
         max-width: (750/16rem);
         margin-bottom: (16/16rem);
@@ -205,7 +202,7 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
         }
       }
 
-      .cs-flex-group {
+      .flex-group {
         /* 16px - 32px */
         padding: clamp(1rem, 3vw, 2rem);
         background-color: #f7f7f7;
@@ -213,7 +210,7 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
         position: relative;
       }
 
-      .cs-flex-p {
+      .flex-p {
         /* 14px - 16px */
         font-size: clamp(0.875rem, 1.5vw, 1rem);
         line-height: 1.5em;
@@ -221,7 +218,7 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
         color: #353535;
       }
 
-      .cs-name {
+      .name {
         font-size: (16/16rem);
         font-weight: bold;
         line-height: 1.2em;
@@ -231,14 +228,14 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
         display: block;
       }
 
-      .cs-job {
+      .job {
         font-size: (14/16rem);
         line-height: 1.5em;
         color: #353535;
         display: block;
       }
 
-      .cs-quote-icon {
+      .quote-icon {
         /* 60px - 136px */
         width: clamp(3.75rem, 10vw, 8.5rem);
         height: auto;
@@ -248,7 +245,7 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
         bottom: (0/16rem);
       }
 
-      .cs-button-solid {
+      .button-solid {
         margin-top: (32/16rem);
       }
     }
@@ -257,18 +254,18 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
   /* Desktop - 1024px */
   @media only screen and (min-width: 64em) {
     #sbs {
-      .cs-container {
+      .container {
         flex-flow: row;
         justify-content: space-between;
         gap: (52/16rem);
       }
 
-      .cs-left {
+      .left {
         font-size: ~"min(1.2vw, 1em)";
         flex: none;
       }
 
-      .cs-right {
+      .right {
         margin: 0;
       }
     }
@@ -278,41 +275,41 @@ const optimizedImage = await getImage({src: landingImage, format: 'avif'})
   @media only screen and (min-width: 0em) {
     body.dark-mode {
       #sbs {
-        .cs-left {
+        .left {
           &:before,
           &:after {
             background: var(--accent);
           }
         }
 
-        .cs-picture2 {
+        .picture2 {
           background-color: var(--dark);
           /* 6px - 12px */
           border: clamp(0.375em, 1.5vw, 0.75em) solid var(--dark);
         }
 
-        .cs-topper {
+        .topper {
           color: var(--primaryLight);
         }
 
-        .cs-title,
-        .cs-text,
-        .cs-h3,
-        .cs-flex-p,
-        .cs-name {
+        .title,
+        .text,
+        .h3,
+        .flex-p,
+        .name {
           color: var(--bodyTextColorWhite);
         }
 
-        .cs-flex-group {
+        .flex-group {
           background-color: var(--accent);
         }
 
-        .cs-job {
+        .job {
           color: var(--bodyTextColorWhite);
           opacity: 0.8;
         }
 
-        .cs-quote-icon {
+        .quote-icon {
           opacity: 0.2;
         }
       }

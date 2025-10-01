@@ -4,33 +4,35 @@ import CTA from "@components/CTA.astro";
 import FAQ from "@components/FAQ.astro";
 
 // Optimize our landing image and pass it as props to the BaseLayout (for preloading) and Landing (for rendering)
-import landingImage from "@assets/images/landing.jpg" // <-- THE PATH TO THE ASSET YOU WANT TO PRELOAD - The asset must live in src
+import landingImage from "@assets/images/landing.jpg"; // <-- THE PATH TO THE ASSET YOU WANT TO PRELOAD - The asset must live in src
 import { getImage } from "astro:assets";
-const optimizedImage = await getImage({src: landingImage, format: 'avif'})
+const optimizedImage = await getImage({ src: landingImage, format: "avif" });
 ---
 
 <BaseLayout
   title="Pixel Perfect Websites"
   description="Meta description for the page"
-  preloadedImage = {optimizedImage}
+  preloadedImage={optimizedImage}
 >
   <!-- ============================================ -->
   <!--                    Hero                      -->
   <!-- ============================================ -->
 
   <section id="hero">
-    <div class="cs-container">
-      <div class="cs-flex-group">
-        <span class="cs-topper">Intermediate Kit</span>
-        <h1 class="cs-title">Intermediate Astro v4 <br/> Decap CMS</h1>
-        <p class="cs-text">
-          This intermediate kit includes a pre-configured Astro environment, which
-allows for repeated components, centralized data and greater room to scale as your clients grow. Decap CMS has been integrated to run a blog.
+    <div class="container">
+      <div class="flex-group">
+        <span class="topper">Intermediate Kit</span>
+        <h1 class="title">Intermediate Astro v4 <br /> Decap CMS</h1>
+        <p class="text">
+          This intermediate kit includes a pre-configured Astro environment,
+          which allows for repeated components, centralized data and greater
+          room to scale as your clients grow. Decap CMS has been integrated to
+          run a blog.
         </p>
-        <a href="/about" class="cs-button-solid">Explore More</a>
-        <a href="/contact" class="cs-button-transparent">
+        <a href="/about" class="button-solid">Explore More</a>
+        <a href="/contact" class="button-transparent">
           <img
-            class="cs-img"
+            class="img"
             loading="lazy"
             decoding="async"
             src="https://csimg.nyc3.digitaloceanspaces.com/Hero/play.svg"
@@ -45,11 +47,8 @@ allows for repeated components, centralized data and greater room to scale as yo
 
     <!-- Background Image -->
     <!-- We can't use Astro <Picture /> as it does not support multiple sources -->
-    <picture class="cs-picture">
-      <source
-        media="(max-width: 600px)"
-        srcset="/assets/images/hero-m.webp"
-      />
+    <picture class="picture">
+      <source media="(max-width: 600px)" srcset="/assets/images/hero-m.webp" />
       <source media="(min-width: 601px)" srcset="/assets/images/hero.jpg" />
       <img
         aria-hidden="true"
@@ -61,7 +60,6 @@ allows for repeated components, centralized data and greater room to scale as yo
         loading="eager"
       />
     </picture>
-
   </section>
 
   <!-- ============================================ -->
@@ -127,10 +125,10 @@ allows for repeated components, centralized data and greater room to scale as yo
   <!-- ============================================ -->
 
   <section id="sbs">
-    <div class="cs-container">
+    <div class="container">
       <!-- Left Image Section -->
-      <div class="cs-left">
-        <picture class="cs-picture cs-picture1">
+      <div class="left">
+        <picture class="picture picture1">
           <source
             media="(max-width: 600px)"
             srcset="/assets/images/cabinets2-m.jpg"
@@ -149,7 +147,7 @@ allows for repeated components, centralized data and greater room to scale as yo
             height="563"
           />
         </picture>
-        <picture class="cs-picture cs-picture2">
+        <picture class="picture picture2">
           <source
             media="(max-width: 600px)"
             srcset="/assets/images/construction-m.jpg"
@@ -170,30 +168,30 @@ allows for repeated components, centralized data and greater room to scale as yo
         </picture>
       </div>
       <!-- Right Content Section-->
-      <div class="cs-right">
-        <span class="cs-topper">About Us</span>
-        <h2 class="cs-title">About Company Title</h2>
-        <p class="cs-text">
+      <div class="right">
+        <span class="topper">About Us</span>
+        <h2 class="title">About Company Title</h2>
+        <p class="text">
           In consequat tincidunt turpis sit amet imperdiet. Praesent Class
           officelan nonatoureanor mauris laoreet, iaculis libero quis. Curabitur
           et tempus eri consequat tincidunt turpis sit amet imperdiet. Praesent
           nonatourean olei aptent taciti sociosqu ad litora torquent per.
         </p>
-        <p class="cs-text">
+        <p class="text">
           In consequat tincidunt turpis sit amet imperdiet. Praesent Class
           officelan nonatoureanor mauris laoreet, iaculis libero quis. Curabitur
           et tempus eri consequat tincidunt turpis sit amet imperdiet. Praesent
           nonatourean olei aptent taciti sociosqu ad litora torquent per.
         </p>
-        <div class="cs-flex-group">
-          <p class="cs-flex-p">
+        <div class="flex-group">
+          <p class="flex-p">
             In consequat tincidunt turpis sit amet imperdiet. Praesent Classei
             consequat tincidunt turpis sit amet imperdiet for mind.
           </p>
-          <span class="cs-name">Justin Time</span>
-          <span class="cs-job">CEO-Founder</span>
+          <span class="name">Justin Time</span>
+          <span class="job">CEO-Founder</span>
           <img
-            class="cs-quote-icon"
+            class="quote-icon"
             loading="lazy"
             decoding="async"
             src="https://csimg.nyc3.digitaloceanspaces.com/SideBySide/quote-white.svg"
@@ -202,7 +200,7 @@ allows for repeated components, centralized data and greater room to scale as yo
             height="77"
           />
         </div>
-        <a href="/about" class="cs-button-solid">More About Us</a>
+        <a href="/about" class="button-solid">More About Us</a>
       </div>
     </div>
   </section>
@@ -212,10 +210,10 @@ allows for repeated components, centralized data and greater room to scale as yo
   <!-- ============================================ -->
 
   <section id="sbs-r">
-    <div class="cs-container">
+    <div class="container">
       <!-- Left Image Section -->
-      <div class="cs-left">
-        <picture class="cs-picture cs-picture1">
+      <div class="left">
+        <picture class="picture picture1">
           <source
             media="(max-width: 600px)"
             srcset="/assets/images/construction-m.jpg"
@@ -234,7 +232,7 @@ allows for repeated components, centralized data and greater room to scale as yo
             height="560"
           />
         </picture>
-        <picture class="cs-picture cs-picture2">
+        <picture class="picture picture2">
           <source
             media="(max-width: 600px)"
             srcset="/assets/images/cabinets2-m.jpg"
@@ -255,16 +253,16 @@ allows for repeated components, centralized data and greater room to scale as yo
         </picture>
       </div>
       <!-- Right Content Section-->
-      <div class="cs-right">
-        <span class="cs-topper">SEO Ranking</span>
-        <h2 class="cs-title">Talk about a main service keyword</h2>
-        <p class="cs-text">
+      <div class="right">
+        <span class="topper">SEO Ranking</span>
+        <h2 class="title">Talk about a main service keyword</h2>
+        <p class="text">
           In consequat tincidunt turpis sit amet imperdiet. Praesent Class
           officelan nonatoureanor mauris laoreet, iaculis libero quis. Curabitur
           et tempus eri consequat tincidunt turpis sit amet imperdiet. Praesent
           nonatourean olei aptent taciti sociosqu ad litora torquent per.
         </p>
-        <p class="cs-text">
+        <p class="text">
           Lorem, ipsum dolor sit amet consectetur adipisicing elit. Non tenetur,
           iure nihil ipsam qui atque commodi id voluptatem nesciunt, quis animi
           fuga cum doloribus! Eaque laboriosam, unde consectetur iure asperiores
@@ -282,16 +280,14 @@ allows for repeated components, centralized data and greater room to scale as yo
   <!-- ============================================ -->
 
   <section id="gallery">
-    <div class="cs-container">
-      <span class="cs-topper">Our Portfolio</span>
-      <h2 class="cs-title">
-        Et orci volutpat, back up generator installations
-      </h2>
-      <div class="cs-image-group">
+    <div class="container">
+      <span class="topper">Our Portfolio</span>
+      <h2 class="title">Et orci volutpat, back up generator installations</h2>
+      <div class="image-group">
         <!-- Row 1-->
-        <div class="cs-row cs-row-1">
-          <!-- To add more images, copy and paste this row's picture tags here in order from cs-picture-1 to cs-picture-3 and they will maintain the same layout-->
-          <picture class="cs-picture cs-picture1">
+        <div class="row row-1">
+          <!-- To add more images, copy and paste this row's picture tags here in order from picture-1 to picture-3 and they will maintain the same layout-->
+          <picture class="picture picture1">
             <source
               media="(max-width: 600px)"
               srcset="/assets/images/portfolio/port1-m.jpg"
@@ -310,7 +306,7 @@ allows for repeated components, centralized data and greater room to scale as yo
               height="560"
             />
           </picture>
-          <picture class="cs-picture cs-picture2">
+          <picture class="picture picture2">
             <source
               media="(max-width: 600px)"
               srcset="/assets/images/portfolio/port4-m.jpg"
@@ -329,7 +325,7 @@ allows for repeated components, centralized data and greater room to scale as yo
               height="560"
             />
           </picture>
-          <picture class="cs-picture cs-picture3">
+          <picture class="picture picture3">
             <source
               media="(max-width: 600px)"
               srcset="/assets/images/portfolio/port7-m.jpg"
@@ -350,9 +346,9 @@ allows for repeated components, centralized data and greater room to scale as yo
           </picture>
         </div>
         <!-- Row 2 -->
-        <div class="cs-row cs-row-2">
-          <!-- To add more images, copy and paste this row's picture tags here in order from cs-picture-1 to cs-picture-3 and they will maintain the same layout-->
-          <picture class="cs-picture cs-picture1">
+        <div class="row row-2">
+          <!-- To add more images, copy and paste this row's picture tags here in order from picture-1 to picture-3 and they will maintain the same layout-->
+          <picture class="picture picture1">
             <source
               media="(max-width: 600px)"
               srcset="/assets/images/portfolio/port2-m.jpg"
@@ -371,7 +367,7 @@ allows for repeated components, centralized data and greater room to scale as yo
               height="560"
             />
           </picture>
-          <picture class="cs-picture cs-picture2">
+          <picture class="picture picture2">
             <source
               media="(max-width: 600px)"
               srcset="/assets/images/portfolio/port5-m.jpg"
@@ -390,7 +386,7 @@ allows for repeated components, centralized data and greater room to scale as yo
               height="560"
             />
           </picture>
-          <picture class="cs-picture cs-picture3">
+          <picture class="picture picture3">
             <source
               media="(max-width: 600px)"
               srcset="/assets/images/portfolio/port8-m.jpg"
@@ -411,9 +407,9 @@ allows for repeated components, centralized data and greater room to scale as yo
           </picture>
         </div>
         <!-- Row 3 -->
-        <div class="cs-row cs-row-3">
-          <!-- To add more images, copy and paste this row's picture tags here in order from cs-picture-1 to cs-picture-3 and they will maintain the same layout-->
-          <picture class="cs-picture cs-picture1">
+        <div class="row row-3">
+          <!-- To add more images, copy and paste this row's picture tags here in order from picture-1 to picture-3 and they will maintain the same layout-->
+          <picture class="picture picture1">
             <source
               media="(max-width: 600px)"
               srcset="/assets/images/portfolio/port3-m.jpg"
@@ -432,7 +428,7 @@ allows for repeated components, centralized data and greater room to scale as yo
               height="560"
             />
           </picture>
-          <picture class="cs-picture cs-picture2">
+          <picture class="picture picture2">
             <source
               media="(max-width: 600px)"
               srcset="/assets/images/portfolio/port6-m.jpg"
@@ -451,7 +447,7 @@ allows for repeated components, centralized data and greater room to scale as yo
               height="560"
             />
           </picture>
-          <picture class="cs-picture cs-picture3">
+          <picture class="picture picture3">
             <source
               media="(max-width: 600px)"
               srcset="/assets/images/portfolio/port9-m.jpg"
@@ -472,34 +468,34 @@ allows for repeated components, centralized data and greater room to scale as yo
           </picture>
         </div>
       </div>
-      <a href="/projects" class="cs-button-solid">View all projects</a>
+      <a href="/projects" class="button-solid">View all projects</a>
     </div>
   </section>
 
-    <!-- ============================================ -->
+  <!-- ============================================ -->
   <!--                    FAQ                       -->
   <!-- ============================================ -->
   <FAQ />
-  
+
   <!-- ============================================ -->
   <!--                   Reviews                    -->
   <!-- ============================================ -->
 
   <section id="reviews">
-    <div class="cs-container">
-      <span class="cs-topper">Our Reviews</span>
-      <h2 class="cs-title">Words From Our Customers</h2>
-      <p class="cs-text">
+    <div class="container">
+      <span class="topper">Our Reviews</span>
+      <h2 class="title">Words From Our Customers</h2>
+      <p class="text">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sit dolor
         volutpat porttitor sagittis nunc nisl. Sagittis sit pellentesque gravida
         viverra. Leo ut sed euismod tortor risus et. Ornare non neque, leo,
         ornare. Lorem ipsum dolor sit amet.
       </p>
-      <ul class="cs-card-group">
+      <ul class="card-group">
         <!-- Review 1 -->
-        <li class="cs-item">
+        <li class="item">
           <img
-            class="cs-item-img"
+            class="item-img"
             aria-hidden="true"
             loading="lazy"
             decoding="async"
@@ -508,18 +504,18 @@ allows for repeated components, centralized data and greater room to scale as yo
             width="80"
             height="80"
           />
-          <p class="cs-item-p">
+          <p class="item-p">
             Dictum dolor, nullam morbi sem in auctor proin. Consequat dolor
             habitasse nam sed tempor. Viverra magna pharetra rhoncus, nec sed
             ullamcorper lectus et. Auctor velit diam fermentum consequat.
             Feugiat viverra massa urna, volutpat orci imperdiet eget eget.
           </p>
-          <span class="cs-reviewer">
+          <span class="reviewer">
             Jon Doe
-            <span class="cs-desc">Homeowner</span>
+            <span class="desc">Homeowner</span>
           </span>
           <img
-            class="cs-item-stars"
+            class="item-stars"
             aria-hidden="true"
             loading="lazy"
             decoding="async"
@@ -530,9 +526,9 @@ allows for repeated components, centralized data and greater room to scale as yo
           />
         </li>
         <!-- Review 2 -->
-        <li class="cs-item">
+        <li class="item">
           <img
-            class="cs-item-img"
+            class="item-img"
             aria-hidden="true"
             loading="lazy"
             decoding="async"
@@ -541,18 +537,18 @@ allows for repeated components, centralized data and greater room to scale as yo
             width="80"
             height="80"
           />
-          <p class="cs-item-p">
+          <p class="item-p">
             Dictum dolor, nullam morbi sem in auctor proin. Consequat dolor
             habitasse nam sed tempor. Viverra magna pharetra rhoncus, nec sed
             ullamcorper lectus et. Auctor velit diam fermentum consequat.
             Feugiat viverra massa urna, volutpat orci imperdiet eget eget.
           </p>
-          <span class="cs-reviewer">
+          <span class="reviewer">
             Jane Doe
-            <span class="cs-desc">Homeowner</span>
+            <span class="desc">Homeowner</span>
           </span>
           <img
-            class="cs-item-stars"
+            class="item-stars"
             aria-hidden="true"
             loading="lazy"
             decoding="async"
@@ -563,7 +559,7 @@ allows for repeated components, centralized data and greater room to scale as yo
           />
         </li>
       </ul>
-      <a aria-label="read more reviews" href="/reviews" class="cs-button-solid"
+      <a aria-label="read more reviews" href="/reviews" class="button-solid"
         >Our Reviews</a
       >
     </div>
@@ -593,7 +589,7 @@ allows for repeated components, centralized data and greater room to scale as yo
       /* prevents overflow from the lines extending past the screen width */
       overflow: hidden;
 
-      .cs-picture {
+      .picture {
         /* Background Image */
         width: 100%;
         height: 100%;
@@ -630,7 +626,7 @@ allows for repeated components, centralized data and greater room to scale as yo
         }
       }
 
-      .cs-container {
+      .container {
         width: 100%;
         max-width: (1280/16em);
         margin: auto;
@@ -663,7 +659,7 @@ allows for repeated components, centralized data and greater room to scale as yo
         }
       }
 
-      .cs-flex-group {
+      .flex-group {
         width: 80vw;
         /* 464px - 562px */
         max-width: clamp(29em, 60vw, 35.125em);
@@ -677,19 +673,19 @@ allows for repeated components, centralized data and greater room to scale as yo
         flex-wrap: wrap;
       }
 
-      .cs-topper {
+      .topper {
         text-align: center;
         margin-bottom: (16/16rem);
         color: var(--primary);
       }
 
-      .cs-title {
+      .title {
         text-align: center;
         width: 100%;
         color: var(--bodyTextColorWhite);
       }
 
-      .cs-text {
+      .text {
         text-align: center;
         /* 32px - 40px */
         margin: 0 auto clamp(2rem, 4vw, 2.5rem) 0;
@@ -698,13 +694,13 @@ allows for repeated components, centralized data and greater room to scale as yo
         color: var(--bodyTextColorWhite);
       }
 
-      .cs-button-solid {
+      .button-solid {
         line-height: clamp(2.875em, 5.5vw, 3.5em);
         height: initial;
         margin-bottom: calc(16 / 16 * 1rem);
       }
 
-      .cs-button-transparent {
+      .button-transparent {
         font-size: (16/16rem);
         font-weight: 700;
         /* 46px - 56px */
@@ -749,7 +745,7 @@ allows for repeated components, centralized data and greater room to scale as yo
           }
         }
 
-        .cs-img {
+        .img {
           margin-right: (12/16rem);
           display: block;
         }
@@ -763,7 +759,7 @@ allows for repeated components, centralized data and greater room to scale as yo
       /* 32px - 40px */
       padding: 0 clamp(2em, 5vw, 2.5em);
 
-      .cs-container {
+      .container {
         padding: clamp(7em, 27.95vw, 17.5em) 0 clamp(9em, 30.95vw, 23.5em) 0;
         &:after {
           /* Right Line */
@@ -788,7 +784,7 @@ allows for repeated components, centralized data and greater room to scale as yo
         }
       }
 
-      .cs-button-solid {
+      .button-solid {
         margin-right: (20/16rem);
         margin-bottom: 0;
       }
@@ -811,7 +807,7 @@ allows for repeated components, centralized data and greater room to scale as yo
   @media only screen and (min-width: 0em) {
     body.dark-mode {
       #hero {
-        .cs-background {
+        .background {
           &:before {
             opacity: 0.8;
           }
@@ -939,7 +935,7 @@ allows for repeated components, centralized data and greater room to scale as yo
     #sbs {
       padding: var(--sectionPadding);
 
-      .cs-container {
+      .container {
         width: 100%;
         max-width: (1280/16rem);
         margin: auto;
@@ -950,7 +946,7 @@ allows for repeated components, centralized data and greater room to scale as yo
         row-gap: (40/16rem);
       }
 
-      .cs-left {
+      .left {
         /* scaling the font size with the view width */
         font-size: ~"min(2.31vw, .7em)";
         /* using ems so we can use font size to scale the whole section */
@@ -959,7 +955,7 @@ allows for repeated components, centralized data and greater room to scale as yo
         position: relative;
       }
 
-      .cs-picture {
+      .picture {
         border-radius: (24/16em);
         display: block;
         position: absolute;
@@ -976,14 +972,14 @@ allows for repeated components, centralized data and greater room to scale as yo
         }
       }
 
-      .cs-picture1 {
+      .picture1 {
         width: (522/16em);
         height: (581/16em);
         top: 0;
         left: 0;
       }
 
-      .cs-picture2 {
+      .picture2 {
         width: (414/16em);
         height: (400/16em);
         background-color: #fff;
@@ -994,22 +990,22 @@ allows for repeated components, centralized data and greater room to scale as yo
         bottom: 0;
       }
 
-      .cs-right {
+      .right {
         max-width: (542/16rem);
         margin: auto;
       }
 
-      .cs-topper {
+      .topper {
         text-align: left;
         margin-bottom: (4/16rem);
       }
 
-      .cs-title {
+      .title {
         text-align: left;
         max-width: (800/16rem);
       }
 
-      .cs-text {
+      .text {
         text-align: left;
         max-width: (750/16rem);
         margin-bottom: (16/16rem);
@@ -1019,7 +1015,7 @@ allows for repeated components, centralized data and greater room to scale as yo
         }
       }
 
-      .cs-flex-group {
+      .flex-group {
         /* 16px - 32px */
         padding: clamp(1rem, 3vw, 2rem);
         background-color: #f7f7f7;
@@ -1027,7 +1023,7 @@ allows for repeated components, centralized data and greater room to scale as yo
         position: relative;
       }
 
-      .cs-flex-p {
+      .flex-p {
         /* 14px - 16px */
         font-size: clamp(0.875rem, 1.5vw, 1rem);
         line-height: 1.5em;
@@ -1035,7 +1031,7 @@ allows for repeated components, centralized data and greater room to scale as yo
         color: #353535;
       }
 
-      .cs-name {
+      .name {
         font-size: (16/16rem);
         font-weight: bold;
         line-height: 1.2em;
@@ -1045,14 +1041,14 @@ allows for repeated components, centralized data and greater room to scale as yo
         display: block;
       }
 
-      .cs-job {
+      .job {
         font-size: (14/16rem);
         line-height: 1.5em;
         color: #353535;
         display: block;
       }
 
-      .cs-quote-icon {
+      .quote-icon {
         /* 60px - 136px */
         width: clamp(3.75rem, 10vw, 8.5rem);
         height: auto;
@@ -1062,7 +1058,7 @@ allows for repeated components, centralized data and greater room to scale as yo
         bottom: (0/16rem);
       }
 
-      .cs-button-solid {
+      .button-solid {
         margin-top: (32/16rem);
       }
     }
@@ -1071,18 +1067,18 @@ allows for repeated components, centralized data and greater room to scale as yo
   /* Desktop - 1024px */
   @media only screen and (min-width: 64em) {
     #sbs {
-      .cs-container {
+      .container {
         flex-flow: row;
         justify-content: space-between;
         gap: (52/16rem);
       }
 
-      .cs-left {
+      .left {
         font-size: ~"min(1.2vw, 1em)";
         flex: none;
       }
 
-      .cs-right {
+      .right {
         margin: 0;
       }
     }
@@ -1092,41 +1088,41 @@ allows for repeated components, centralized data and greater room to scale as yo
   @media only screen and (min-width: 0em) {
     body.dark-mode {
       #sbs {
-        .cs-left {
+        .left {
           &:before,
           &:after {
             background: var(--accent);
           }
         }
 
-        .cs-picture2 {
+        .picture2 {
           background-color: var(--dark);
           /* 6px - 12px */
           border: clamp(0.375em, 1.5vw, 0.75em) solid var(--dark);
         }
 
-        .cs-topper {
+        .topper {
           color: var(--primaryLight);
         }
 
-        .cs-title,
-        .cs-text,
-        .cs-h3,
-        .cs-flex-p,
-        .cs-name {
+        .title,
+        .text,
+        .h3,
+        .flex-p,
+        .name {
           color: var(--bodyTextColorWhite);
         }
 
-        .cs-flex-group {
+        .flex-group {
           background-color: var(--accent);
         }
 
-        .cs-job {
+        .job {
           color: var(--bodyTextColorWhite);
           opacity: 0.8;
         }
 
-        .cs-quote-icon {
+        .quote-icon {
           opacity: 0.2;
         }
       }
@@ -1142,7 +1138,7 @@ allows for repeated components, centralized data and greater room to scale as yo
     #sbs-r {
       padding: var(--sectionPadding);
 
-      .cs-container {
+      .container {
         width: 100%;
         max-width: (1280/16rem);
         margin: auto;
@@ -1153,7 +1149,7 @@ allows for repeated components, centralized data and greater room to scale as yo
         row-gap: (40/16rem);
       }
 
-      .cs-left {
+      .left {
         /* scaling the font size with the view width */
         font-size: ~"min(2.31vw, .7em)";
         /* using ems so we can use font size to scale the whole section */
@@ -1162,7 +1158,7 @@ allows for repeated components, centralized data and greater room to scale as yo
         position: relative;
       }
 
-      .cs-picture {
+      .picture {
         border-radius: (24/16em);
         display: block;
         position: absolute;
@@ -1179,14 +1175,14 @@ allows for repeated components, centralized data and greater room to scale as yo
         }
       }
 
-      .cs-picture1 {
+      .picture1 {
         width: (522/16em);
         height: (581/16em);
         top: 0;
         right: 0;
       }
 
-      .cs-picture2 {
+      .picture2 {
         width: (414/16em);
         height: (400/16em);
         background-color: #fff;
@@ -1197,22 +1193,22 @@ allows for repeated components, centralized data and greater room to scale as yo
         left: 0;
       }
 
-      .cs-right {
+      .right {
         max-width: (542/16rem);
         margin: auto;
       }
 
-      .cs-topper {
+      .topper {
         text-align: left;
         margin-bottom: (4/16rem);
       }
 
-      .cs-title {
+      .title {
         text-align: left;
         max-width: (800/16rem);
       }
 
-      .cs-text {
+      .text {
         text-align: left;
         max-width: (750/16rem);
         margin-bottom: (16/16rem);
@@ -1221,7 +1217,7 @@ allows for repeated components, centralized data and greater room to scale as yo
         }
       }
 
-      .cs-flex-group {
+      .flex-group {
         /* 16px - 32px */
         padding: clamp(1rem, 3vw, 2rem);
         background-color: #f7f7f7;
@@ -1229,7 +1225,7 @@ allows for repeated components, centralized data and greater room to scale as yo
         position: relative;
       }
 
-      .cs-flex-p {
+      .flex-p {
         /* 14px - 16px */
         font-size: clamp(0.875rem, 1.5vw, 1rem);
         line-height: 1.5em;
@@ -1237,7 +1233,7 @@ allows for repeated components, centralized data and greater room to scale as yo
         color: #353535;
       }
 
-      .cs-name {
+      .name {
         font-size: (16/16rem);
         font-weight: bold;
         line-height: 1.2em;
@@ -1247,14 +1243,14 @@ allows for repeated components, centralized data and greater room to scale as yo
         display: block;
       }
 
-      .cs-job {
+      .job {
         font-size: (14/16rem);
         line-height: 1.5em;
         color: #353535;
         display: block;
       }
 
-      .cs-quote-icon {
+      .quote-icon {
         /* 60px - 136px */
         width: clamp(3.75rem, 10vw, 8.5rem);
         height: auto;
@@ -1269,20 +1265,20 @@ allows for repeated components, centralized data and greater room to scale as yo
   /* Desktop - 1024px */
   @media only screen and (min-width: 64em) {
     #sbs-r {
-      .cs-container {
+      .container {
         flex-flow: row;
         justify-content: space-between;
         gap: (52/16rem);
       }
 
-      .cs-left {
+      .left {
         font-size: ~"min(1.2vw, 1em)";
         /* sends it to the right */
         order: 2;
         flex: none;
       }
 
-      .cs-right {
+      .right {
         margin: 0;
       }
     }
@@ -1292,41 +1288,41 @@ allows for repeated components, centralized data and greater room to scale as yo
   @media only screen and (min-width: 0em) {
     body.dark-mode {
       #sbs-r {
-        .cs-left {
+        .left {
           &:before,
           &:after {
             background: var(--accent);
           }
         }
 
-        .cs-picture2 {
+        .picture2 {
           background-color: var(--dark);
           /* 6px - 12px */
           border: clamp(0.375em, 1.5vw, 0.75em) solid var(--dark);
         }
 
-        .cs-topper {
+        .topper {
           color: var(--primaryLight);
         }
 
-        .cs-title,
-        .cs-text,
-        .cs-h3,
-        .cs-flex-p,
-        .cs-name {
+        .title,
+        .text,
+        .h3,
+        .flex-p,
+        .name {
           color: var(--bodyTextColorWhite);
         }
 
-        .cs-flex-group {
+        .flex-group {
           background-color: var(--accent);
         }
 
-        .cs-job {
+        .job {
           color: var(--bodyTextColorWhite);
           opacity: 0.8;
         }
 
-        .cs-quote-icon {
+        .quote-icon {
           opacity: 0.2;
         }
       }
@@ -1346,24 +1342,24 @@ allows for repeated components, centralized data and greater room to scale as yo
       position: relative;
       /* Prevents overflow from the image going off screen */
       overflow: hidden;
-      .cs-container {
+      .container {
         width: 100%;
         max-width: (1322/16em);
         margin: auto;
       }
 
-      .cs-topper {
+      .topper {
         text-align: center;
         margin-bottom: (16/16rem);
       }
 
-      .cs-title {
+      .title {
         text-align: center;
         max-width: (621/16rem);
         margin-bottom: (40/16rem);
       }
 
-      .cs-image-group {
+      .image-group {
         /* used rem so it doesn't scale with the font size of on parent */
         font-size: ~"min(1.1vw, 1em)";
         width: 100%;
@@ -1376,7 +1372,7 @@ allows for repeated components, centralized data and greater room to scale as yo
         gap: (30/16em);
       }
 
-      .cs-row {
+      .row {
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
@@ -1384,7 +1380,7 @@ allows for repeated components, centralized data and greater room to scale as yo
         gap: (30/16em);
       }
 
-      .cs-picture {
+      .picture {
         display: block;
         position: relative;
         img {
@@ -1397,52 +1393,52 @@ allows for repeated components, centralized data and greater room to scale as yo
         }
       }
 
-      .cs-row-1 {
-        .cs-picture1 {
+      .row-1 {
+        .picture1 {
           width: (420/16em);
           height: (567/16em);
         }
 
-        .cs-picture2 {
+        .picture2 {
           width: (420/16em);
           height: (629/16em);
         }
 
-        .cs-picture3 {
+        .picture3 {
           width: (420/16em);
           height: (512/16em);
         }
       }
 
-      .cs-row-2 {
-        .cs-picture1 {
+      .row-2 {
+        .picture1 {
           width: (420/16em);
           height: (492/16em);
         }
 
-        .cs-picture2 {
+        .picture2 {
           width: (420/16em);
           height: (517/16em);
         }
 
-        .cs-picture3 {
+        .picture3 {
           width: (420/16em);
           height: (629/16em);
         }
       }
 
-      .cs-row-3 {
-        .cs-picture1 {
+      .row-3 {
+        .picture1 {
           width: (420/16em);
           height: (625/16em);
         }
 
-        .cs-picture2 {
+        .picture2 {
           width: (420/16em);
           height: (452/16em);
         }
 
-        .cs-picture3 {
+        .picture3 {
           width: (420/16em);
           height: (629/16em);
         }
@@ -1454,7 +1450,7 @@ allows for repeated components, centralized data and greater room to scale as yo
   @media only screen and (min-width: 0em) {
     body.dark-mode {
       #gallery {
-        .cs-title {
+        .title {
           color: var(--bodyTextColorWhite);
         }
       }
@@ -1472,36 +1468,36 @@ allows for repeated components, centralized data and greater room to scale as yo
       text-align: center;
       padding: var(--sectionPadding);
 
-      .cs-container {
+      .container {
         width: 100%;
         max-width: (1104/16rem);
         margin: auto;
       }
 
-      .cs-topper {
+      .topper {
         text-align: center;
         margin-bottom: (16/16rem);
       }
 
-      .cs-title {
+      .title {
         text-align: center;
         max-width: (700/16rem);
       }
 
-      .cs-text {
+      .text {
         text-align: center;
         max-width: (650/16rem);
         /* 88px - 104px */
         margin-bottom: clamp(5.5em, 10.2vw, 6.5em);
       }
 
-      .cs-card-group {
+      .card-group {
         /* 48px - 64px */
         margin: 0 auto clamp(3rem, 5vw, 4rem);
         padding: 0;
       }
 
-      .cs-item {
+      .item {
         text-align: left;
         list-style: none;
         width: 100%;
@@ -1527,14 +1523,14 @@ allows for repeated components, centralized data and greater room to scale as yo
         }
       }
 
-      .cs-item-img {
+      .item-img {
         width: (80/16rem);
         height: (80/16rem);
         position: absolute;
         top: (-40/16rem);
       }
 
-      .cs-item-p {
+      .item-p {
         font-size: (16/16rem);
         line-height: 1.5em;
         margin: 0 0 (20/16rem);
@@ -1543,7 +1539,7 @@ allows for repeated components, centralized data and greater room to scale as yo
         border-bottom: 1px solid #e8e9ec;
       }
 
-      .cs-reviewer {
+      .reviewer {
         font-size: (16/16rem);
         font-weight: 700;
         line-height: 1.5em;
@@ -1553,14 +1549,14 @@ allows for repeated components, centralized data and greater room to scale as yo
         display: block;
       }
 
-      .cs-desc {
+      .desc {
         font-size: (14/16rem);
         font-weight: 400;
         color: var(#353535);
         display: block;
       }
 
-      .cs-item-stars {
+      .item-stars {
         width: (96/16rem);
         height: (16/16rem);
       }
@@ -1570,14 +1566,14 @@ allows for repeated components, centralized data and greater room to scale as yo
   /* Tablet - 768px */
   @media only screen and (min-width: 48em) {
     #reviews {
-      .cs-card-group {
+      .card-group {
         display: flex;
         justify-content: space-between;
         align-items: center;
         gap: (16/16rem);
       }
 
-      .cs-item {
+      .item {
         /* reset margin so it won't interfere with flexbox */
         margin: 0;
       }
@@ -1588,18 +1584,18 @@ allows for repeated components, centralized data and greater room to scale as yo
   @media only screen and (min-width: 0em) {
     body.dark-mode {
       #reviews {
-        .cs-title,
-        .cs-text,
-        .cs-item-p,
-        .cs-reviewer {
+        .title,
+        .text,
+        .item-p,
+        .reviewer {
           color: var(--bodyTextColorWhite);
         }
 
-        .cs-item {
+        .item {
           background: var(--medium);
         }
 
-        .cs-desc {
+        .desc {
           color: var(--primaryLight);
         }
       }

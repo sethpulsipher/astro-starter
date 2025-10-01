@@ -60,7 +60,7 @@ vanilla component library</a>. This kit aims to get any project off the ground i
 Next, it is recommended to update `data/client.json` with some new information about this project. Through the power of templating, the
 project's `<head>` and contact information will automatically be filled out, providing a first peek into some of the benefits of SSGs.
 
-You can find all of CodeStitches `:root` variables, as well as .cs-topper, .cs-title and .cs-text, within the `root` stylesheet. Feel free to adjust these, or use our Content Flair micro-stitches, to update site-wide styles quickly.
+You can find all of CodeStitches `:root` variables, as well as .topper, .title and .text, within the `root` stylesheet. Feel free to adjust these, or use our Content Flair micro-stitches, to update site-wide styles quickly.
 
 <a name="prerequisites"></a>
 
@@ -371,19 +371,19 @@ The header navigation in the project is powered by the `navData.json` file. Each
 
 To add subpages, populate the `children` array with page objects (i.e., object containing a `key` and `url` property.) If a page has a populated `children` array, a dropdown will be created, provided that a Navigation + Dropdown Stitch is being used (see below). Navigation links will render in the order they're declared.
 
-If you wish to use an alternative Navigation stitch, you are welcome to swap out the `.cs-ul-wrapper` div in the Stitch for the one used in this starter kit.
-This will allow you to continue to reap the benefits of navigation vi navData.json. If you want to include dropdown menus in your navigation, you can use the `.cs-ul-wrapper` div below
+If you wish to use an alternative Navigation stitch, you are welcome to swap out the `.ul-wrapper` div in the Stitch for the one used in this starter kit.
+This will allow you to continue to reap the benefits of navigation vi navData.json. If you want to include dropdown menus in your navigation, you can use the `.ul-wrapper` div below
 
 > Note: we have customised this navigation wrapper to include better accessibility features, which you will not find in navigation stitches.
 
 ```JSX
-<div class="cs-ul-wrapper">
-  <ul id="cs-expanded-ul" class="cs-ul">
+<div class="ul-wrapper">
+  <ul id="expanded-ul" class="ul">
     {navData.map((entry) => (
       <li
         class:list={[
-          "cs-li",
-          { "cs-dropdown": entry.children?.length > 0 },
+          "li",
+          { "dropdown": entry.children?.length > 0 },
         ]}
 
       >
@@ -394,20 +394,20 @@ This will allow you to continue to reap the benefits of navigation vi navData.js
           aria-controls={`submenu-${entry.key}`}
           aria-label="dropdown-label"
             class:list={[
-              "cs-li-link cs-dropdown-button",
-              { "cs-active": Astro.url.pathname.includes(entry.url)},
+              "li-link dropdown-button",
+              { "active": Astro.url.pathname.includes(entry.url)},
             ]}
           >
             {entry.key}
-            <Icon name="mdi--caret" class="cs-drop-icon" />
+            <Icon name="mdi--caret" class="drop-icon" />
           </button>
         ) : (
           // If entry does not have children in navData.json, create an anchor
           <a
             href={entry.url}
             class:list={[
-              "cs-li-link",
-              { "cs-active": Astro.url.pathname === entry.url },
+              "li-link",
+              { "active": Astro.url.pathname === entry.url },
             ]}
             aria-current={Astro.url.pathname === entry.url ? "page" : undefined}
           >
@@ -417,12 +417,12 @@ This will allow you to continue to reap the benefits of navigation vi navData.js
 
         {entry.children?.length > 0 && (
           // If entry has children in navData.json, create a drop down menu
-          <ul id={`submenu-${entry.key}`} class="cs-drop-ul">
+          <ul id={`submenu-${entry.key}`} class="drop-ul">
             {entry.children.map((child) => (
-              <li class="cs-drop-li">
+              <li class="drop-li">
                 <a
                   href={child.url}
-                  class="cs-li-link cs-drop-link"
+                  class="li-link drop-link"
                   aria-current={Astro.url.pathname === child.url ? "page" : undefined}
                   aria-label={child.key}
                 >
@@ -441,43 +441,43 @@ This will allow you to continue to reap the benefits of navigation vi navData.js
 > Should you wish to use your own method of rendering the navigation, you can still take advantage of applying the "active" class styles by using a smaller amount of code within the class attribute of the link:
 
 ```JSX
-<li class="cs-li">
-  <a href="/about" class:list={["cs-li-link, {"cs-active": "/about/" === Astro.url.pathname }]}>About</a>
+<li class="li">
+  <a href="/about" class:list={["li-link, {"active": "/about/" === Astro.url.pathname }]}>About</a>
 </li>
 ```
 
-> In this case, if the page slug is "about", the .cs-active class will be applied. You're welcome to adjust the page slug value to whatever you require ("blog", "/", "services", etc)
+> In this case, if the page slug is "about", the .active class will be applied. You're welcome to adjust the page slug value to whatever you require ("blog", "/", "services", etc)
 > For dropdowns, you can use a similar philosophy on the parent dropdown's class attribute, checking to see if any of the child pages are active before applying the styles. An example of this is shown below:
 
 ```JSX
-<li class="nav-link cs-li cs-dropdown">
-  <span class:list={["cs-li-link nav-link",
-    { 'cs-active': '/annapolis-custom-closets/' === Astro.url.pathname },
-    { 'cs-active': '/bowie-custom-closets/' === Astro.url.pathname },
-    { 'cs-active': '/severna-park-custom-closets/' === Astro.url.pathname },
-    { 'cs-active': '/odenton-custom-closets/' === Astro.url.pathname },
+<li class="nav-link li dropdown">
+  <span class:list={["li-link nav-link",
+    { 'active': '/annapolis-custom-closets/' === Astro.url.pathname },
+    { 'active': '/bowie-custom-closets/' === Astro.url.pathname },
+    { 'active': '/severna-park-custom-closets/' === Astro.url.pathname },
+    { 'active': '/odenton-custom-closets/' === Astro.url.pathname },
   ]}>
     Areas Served
-    <img class="cs-drop-icon" src="/assets/images/down.svg" alt="dropdown icon" width="15" height="15" decoding="async" aria-hidden="true">
+    <img class="drop-icon" src="/assets/images/down.svg" alt="dropdown icon" width="15" height="15" decoding="async" aria-hidden="true">
   </span>
-  <ul class="cs-drop-ul">
-    <li class="cs-drop-li">
-      <a href="/annapolis-custom-closets" class="cs-drop-link">Annapolis</a>
+  <ul class="drop-ul">
+    <li class="drop-li">
+      <a href="/annapolis-custom-closets" class="drop-link">Annapolis</a>
     </li>
-    <li class="cs-drop-li">
-      <a href="/bowie-custom-closets" class="cs-drop-link">Bowie</a>
+    <li class="drop-li">
+      <a href="/bowie-custom-closets" class="drop-link">Bowie</a>
     </li>
-    <li class="cs-drop-li">
-      <a href="/severna-park-custom-closets" class="cs-drop-link">Severna Park</a>
+    <li class="drop-li">
+      <a href="/severna-park-custom-closets" class="drop-link">Severna Park</a>
     </li>
-    <li class="cs-drop-li">
-      <a href="/odenton-custom-closets" class="cs-drop-link">Odenton</a>
+    <li class="drop-li">
+      <a href="/odenton-custom-closets" class="drop-link">Odenton</a>
     </li>
   </ul>
 </li>
 ```
 
-> In the above example, we're checking to see if the active page slug matches any of the four that are listed (annapolis, bowie, severna or odenton) and applying the .cs-active style to the parent if it does.
+> In the above example, we're checking to see if the active page slug matches any of the four that are listed (annapolis, bowie, severna or odenton) and applying the .active style to the parent if it does.
 
 Below the front matter is the page content. Any code that should be sent to a layout should be enclosed in the layout's component:
 
