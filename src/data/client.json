@@ -1,0 +1,15 @@
+{
+	"name": "Example Company",
+	"email": "help@example.com",
+	"phoneForTel": "123-456-7890",
+	"phoneFormatted": "(123) 456-7890",
+	"address": {
+		"lineOne": "First Address Line",
+		"lineTwo": "Second Address Line",
+		"city": "City",
+		"state": "UT",
+		"zip": "84067",
+		"mapLink": "https://goo.gl/maps/UAQn4vuGDiwv7DV39"
+	},
+	"domain": "www.example.com"
+}
