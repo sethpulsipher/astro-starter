@@ -1,462 +1,245 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
-import client from "@data/client.json";
 import Landing from "@components/Landing.astro";
+import ContactForm from "@components/ContactForm.astro";
+import CTA from "@components/CTA.astro";
+import client from "@data/client.json";
 
 // Optimize our landing image and pass it as props to the BaseLayout (for preloading) and Landing (for rendering)
-import landingImage from "@assets/images/landing.jpg"; // <-- THE PATH TO THE ASSET YOU WANT TO PRELOAD - The asset must live in src
+import landingImage from "@assets/images/landing.jpg";
 import { getImage } from "astro:assets";
 const optimizedImage = await getImage({ src: landingImage, format: "avif" });
 ---
 
 <BaseLayout
-  title="Contact"
-  description="Meta description for the page"
+  title="Contact Us"
+  description={`Get in touch with ${client.name}. We're here to help with your business needs. Contact us today for a free consultation.`}
   preloadedImage={optimizedImage}
+  keywords="contact, consultation, business services, get quote"
+  schemaType="WebPage"
 >
-  <!-- ============================================ -->
-  <!--                    LANDING                   -->
-  <!-- ============================================ -->
-
-  <Landing title="Contact" image={optimizedImage} />
+  <Landing title="Contact Us" image={optimizedImage} />
 
   <!-- ============================================ -->
-  <!--                Contact Form                  -->
+  <!--                Contact Info                  -->
   <!-- ============================================ -->
-
-  <section id="contact">
+  
+  <section id="contact-info" class="contact-info-section">
     <div class="container">
-      <form id="form" name="Contact Form" method="post">
-        <div class="content">
-          <span class="topper">Contact</span>
-          <h2 class="title">Get in Touch</h2>
-          <p class="text">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ridiculus
-            elementum ullamcorper ipsum porttitor aliquam. Id magna urna
-            ultrices odio pulvinar. Sed ut.
-          </p>
+      <div class="info-grid">
+        <div class="info-card">
+          <div class="info-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M22 16.92V19.92C22 20.52 21.52 21 20.92 21C9.4 21 0 11.6 0 0.08C0 -0.52 0.48 -1 1.08 -1H4.08C4.68 -1 5.16 -0.52 5.16 0.08C5.16 2.08 5.44 4.04 6 5.92C6.12 6.32 6 6.76 5.72 7.04L4.12 8.64C5.32 11.36 7.64 13.68 10.36 14.88L11.96 13.28C12.24 13 12.68 12.88 13.08 13C14.96 13.56 16.92 13.84 18.92 13.84C19.52 13.84 20 14.32 20 14.92V17.92C20 18.52 19.52 19 18.92 19Z" fill="currentColor"/>
+            </svg>
+          </div>
+          <h3>Phone</h3>
+          <p>Call us directly</p>
+          <a href={`tel:${client.phoneForTel}`} class="contact-link">
+            {client.phoneFormatted}
+          </a>
         </div>
-        <label>
-          Name
-          <input
-            required
-            type="text"
-            id="name"
-            name="name"
-            placeholder="Name"
-          />
-        </label>
-        <label>
-          Email
-          <input
-            required
-            type="text"
-            id="email"
-            name="email"
-            placeholder="Email"
-          />
-        </label>
-        <label>
-          Phone
-          <input
-            required
-            type="text"
-            id="phone"
-            name="phone"
-            placeholder="Phone"
-          />
-        </label>
-        <label>
-          How Did You Find Us
-          <input
-            type="text"
-            id="find"
-            name="find-us"
-            placeholder="How did you find us?"
-          />
-        </label>
-        <label class="label-message">
-          Message
-          <textarea
-            required
-            name="Message"
-            id="message"
-            placeholder="Write message..."></textarea>
-        </label>
-        <button class="button-solid" type="submit">Submit Message</button>
-      </form>
-      <div class="right-section">
-        <!--Email-->
-        <span class="header">Email</span>
-        <a class="link" href={`mailto:${client.email}`}>{client.email}</a>
-        <!--Phone-->
-        <span class="header">Phone</span>
-        <a class="link" href={`tel:${client.phoneForTel}`}
-          >{client.phoneFormatted}</a
-        >
-        <!--Address-->
-        <span class="header">Address</span>
-        <a class="link" href={client.address.mapLink}>
-          {client.address.lineOne},
-          <br />
-          {client.address.lineTwo},
-          <br />
-          <span class="block">
-            {client.address.city}
-            {client.address.state}
-            {client.address.zip}
-          </span>
-        </a>
 
-        <!-- Background Image-->
-        <picture class="bg-picture">
-          <source
-            media="(min-width: 601px)"
-            srcset="/assets/images/skyscraper.jpg"
-          />
-          <img
-            aria-hidden="true"
-            decoding="async"
-            src="/assets/images/skyscraper.jpg"
-            alt="building"
-            loading="lazy"
-            width="2500"
-            height="1667"
-          />
-        </picture>
+        <div class="info-card">
+          <div class="info-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M4 4H20C21.1 4 22 4.9 22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <polyline points="22,6 12,13 2,6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3>Email</h3>
+          <p>Send us a message</p>
+          <a href={`mailto:${client.email}`} class="contact-link">
+            {client.email}
+          </a>
+        </div>
+
+        <div class="info-card">
+          <div class="info-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M21 10C21 17 12 23 12 23S3 17 3 10C3 5.03 7.03 1 12 1S21 5.03 21 10Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="12" cy="10" r="3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3>Address</h3>
+          <p>Visit our office</p>
+          <a href={client.address.mapLink} target="_blank" rel="noopener" class="contact-link">
+            {client.address.lineOne}<br>
+            {client.address.lineTwo && `${client.address.lineTwo}<br>`}
+            {client.address.city}, {client.address.state} {client.address.zip}
+          </a>
+        </div>
+
+        <div class="info-card">
+          <div class="info-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+              <polyline points="12,6 12,12 16,14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3>Business Hours</h3>
+          <p>When we're available</p>
+          <div class="hours-list">
+            <div class="hours-item">
+              <span>Mon-Fri:</span>
+              <span>{client.hours.monday}</span>
+            </div>
+            <div class="hours-item">
+              <span>Saturday:</span>
+              <span>{client.hours.saturday}</span>
+            </div>
+            <div class="hours-item">
+              <span>Sunday:</span>
+              <span>{client.hours.sunday}</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
+
+  <ContactForm />
+
+  <CTA />
 </BaseLayout>
 
 <style lang="less">
-  /* PAGE-SPECIFIC STYLES FOR THE CONTACT PAGE */
+/* Contact Info Section */
+@media only screen and (min-width: 0em) {
+  .contact-info-section {
+    padding: var(--sectionPadding);
+    background: #f8f9fa;
 
-  /*-- -------------------------- -->
-<---          Contact           -->
-<--- -------------------------- -*/
-
-  /* Mobile - 360px */
-  @media only screen and (min-width: 0em) {
-    :root {
-      /* 13px - 16px */
-      --topperFontSize: clamp(0.8125rem, 1.6vw, 1rem);
-      /* 31px - 49px */
-      --headerFontSize: clamp(1.9375rem, 4.5vw, 3.0625rem);
-      --bodyFontSize: 1rem;
-
-      /* 60px - 100px top and bottom */
-      --sectionPadding: clamp(3.75em, 7.82vw, 6.25em) 1rem;
+    .container {
+      width: 100%;
+      max-width: (1280/16rem);
+      margin: auto;
     }
 
-    #contact {
-      font-family: "Roboto", "Arial", sans-serif;
-      padding: var(--sectionPadding);
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: (32/16rem);
+    }
 
-      .container {
-        width: 100%;
-        /* changes to 1280px at desktop */
-        max-width: (800/16rem);
-        margin: auto;
+    .info-card {
+      background: #fff;
+      padding: (32/16rem);
+      border-radius: (12/16rem);
+      text-align: center;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+      &:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+      }
+    }
+
+    .info-icon {
+      width: (64/16rem);
+      height: (64/16rem);
+      margin: 0 auto (24/16rem);
+      background: var(--primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+    }
+
+    .info-card h3 {
+      font-size: (24/16rem);
+      font-weight: 700;
+      margin-bottom: (8/16rem);
+      color: var(--headerColor);
+    }
+
+    .info-card p {
+      margin-bottom: (16/16rem);
+      color: var(--bodyTextColor);
+      opacity: 0.8;
+    }
+
+    .contact-link {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: var(--primaryLight);
+      }
+    }
+
+    .hours-list {
+      text-align: left;
+      max-width: (200/16rem);
+      margin: 0 auto;
+    }
+
+    .hours-item {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: (8/16rem);
+      font-size: (14/16rem);
+
+      span:first-child {
+        font-weight: 600;
+        color: var(--headerColor);
       }
 
-      .content {
-        width: 100%;
-      }
-
-      .topper {
-        text-align: left;
-        /* 8px - 12px */
-        margin-bottom: clamp(0.5rem, 1.4vw, 0.75rem);
-      }
-
-      .title {
-        text-align: left;
-        max-width: (800/16rem);
-      }
-
-      .text {
-        text-align: left;
-        /* 404px - 522px */
-        max-width: clamp(25.25rem, 30vw, 32.625rem);
-        margin: 0 auto 0 0;
-        /* 40px - 48px */
-        margin-bottom: clamp(2.5rem, 6.3vw, 3rem);
-      }
-
-      #form {
-        margin-bottom: (40/16rem);
-        label {
-          font-size: (16/16rem);
-          font-weight: 700;
-          line-height: 1.5em;
-          /* 12px - 20px */
-          margin-bottom: clamp(0.75rem, 1.3em, 1.25rem);
-          color: var(--headerColor);
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: flex-start;
-        }
-
-        .label-message {
-          /* 32px - 48px */
-          margin-bottom: clamp(2rem, 6.3vw, 3rem);
-        }
-
-        input,
-        textarea {
-          font-size: (16/16rem);
-          width: 100%;
-          height: (64/16rem);
-          margin-top: (4/16rem);
-          /* prevents border & padding from affecting height */
-          box-sizing: border-box;
-          padding-left: (20/16rem);
-          border: 1px solid #b4b2c7;
-          border-radius: (8/16rem);
-          transition: border 0.3s;
-
-          &:hover {
-            border: 1px solid var(--primary);
-          }
-        }
-
-        textarea {
-          font-family: inherit;
-          min-height: (120/16rem);
-          padding-top: (20/16rem);
-        }
-
-        .button-solid {
-          width: 100%;
-          border: none;
-        }
-      }
-
-      .right-section {
-        height: (320/16rem);
-        /* 24px - 40px top & bottom */
-        /* 20px - 40px left & right */
-        padding: clamp(1.5rem, 3vw, 2.5rem) clamp(1.25rem, 3vw, 2.5rem);
-        border-radius: (8/16rem);
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
-        align-items: flex-start;
-        position: relative;
-        /* cuts off corners on img tag */
-        overflow: hidden;
-      }
-
-      .header {
-        /* 16px - 20px */
-        font-size: clamp(1rem, 3vw, 1.25rem);
-        font-weight: 700;
-        line-height: 1.2em;
-        margin-bottom: (8/16rem);
-        color: var(--bodyTextColorWhite);
-        display: block;
-      }
-
-      .link {
-        /* 16px - 20px */
-        font-size: clamp(1rem, 3vw, 1.25rem);
-        line-height: 1.2em;
-        text-decoration: none;
-        margin-bottom: (20/16rem);
-        color: var(--bodyTextColorWhite);
-        display: block;
-        position: relative;
-
-        &:before {
-          /* Animated underline */
-          content: "";
-          width: 0%;
-          height: 2px;
-          /* current color of the parent */
-          background: currentColor;
-          opacity: 1;
-          display: block;
-          position: absolute;
-          bottom: (-2/16rem);
-          left: 0;
-          transition: width 0.3s;
-        }
-
-        &:hover {
-          &:before {
-            width: 100%;
-          }
-        }
-
-        &:last-of-type {
-          margin-bottom: 0;
-        }
-      }
-
-      .block {
-        /* sends second address line to the bottom on its own line */
-        display: block;
-      }
-
-      .bg-picture {
-        width: 100%;
-        height: 100%;
-        display: block;
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: -1;
-        transition: transform 0.6s;
-
-        &:before {
-          /* background color overlay */
-          content: "";
-          width: 100%;
-          height: 100%;
-          background: linear-gradient(
-            180deg,
-            rgba(0, 0, 0, 0) 0%,
-            rgba(0, 0, 0, 0.8) 100%
-          );
-          display: block;
-          position: absolute;
-          top: 0;
-          left: 0;
-          z-index: 1;
-        }
-
-        img {
-          width: 100%;
-          height: 100%;
-          /* Makes img tag act as a background image */
-          object-fit: cover;
-          position: absolute;
-          top: 0;
-          left: 0;
-        }
+      span:last-child {
+        color: var(--bodyTextColor);
       }
     }
   }
+}
 
-  /* Tablet - 700px */
-  @media only screen and (min-width: 43.75em) {
-    #contact {
-      #form {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-        flex-wrap: wrap;
-
-        label {
-          width: 48%;
-        }
-
-        .label-message {
-          width: 100%;
-        }
-      }
+/* Tablet - 768px */
+@media only screen and (min-width: 48em) {
+  .contact-info-section {
+    .info-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: (40/16rem);
     }
   }
+}
 
-  /* Small Desktop - 1024px */
-  @media only screen and (min-width: 64em) {
-    #contact {
-      .container {
-        max-width: (1280/16rem);
-        display: flex;
-        justify-content: flex-end;
-        align-items: flex-start;
-        gap: (80/16rem);
-      }
-
-      #form {
-        max-width: (630/16rem);
-        label {
-          width: 100%;
-        }
-      }
-
-      .right-section {
-        width: 40%;
-        max-width: (542/16rem);
-        /* changes to 578px at 1300px wide */
-        height: (686/16rem);
-        /* prevents flexbox from squishing it */
-        flex: none;
-
-        &:hover {
-          .bg-picture {
-            transform: scale(1.1);
-          }
-        }
-      }
-
-      .block {
-        /* goes back to inline so it stays "in line" with the rest of the text */
-        display: inline-block;
-      }
+/* Desktop - 1024px */
+@media only screen and (min-width: 64em) {
+  .contact-info-section {
+    .info-grid {
+      grid-template-columns: repeat(4, 1fr);
     }
   }
+}
 
-  /* Small Desktop - 1300px */
-  @media only screen and (min-width: 81.25em) {
-    #contact {
-      #form {
-        column-gap: (0/16rem);
-        label {
-          width: 48%;
-          max-width: (305/16rem);
-        }
+/* Dark Mode */
+body.dark-mode {
+  .contact-info-section {
+    background: var(--dark);
 
-        .label-message {
-          max-width: 100%;
-        }
-      }
+    .info-card {
+      background: var(--medium);
+    }
 
-      .right-section {
-        height: (578/16rem);
-      }
+    .info-card h3 {
+      color: var(--bodyTextColorWhite);
+    }
+
+    .info-card p {
+      color: var(--bodyTextColorWhite);
+    }
+
+    .hours-item span:first-child {
+      color: var(--bodyTextColorWhite);
+    }
+
+    .hours-item span:last-child {
+      color: var(--bodyTextColorWhite);
+      opacity: 0.8;
     }
   }
-
-  /* Dark Mode */
-  @media only screen and (min-width: 0em) {
-    body.dark-mode {
-      #contact {
-        .text,
-        .title {
-          color: var(--bodyTextColorWhite);
-        }
-
-        .topper {
-          color: var(--primaryLight);
-        }
-
-        #form {
-          label,
-          input,
-          textarea {
-            color: var(--bodyTextColorWhite);
-            background-color: transparent;
-
-            &::placeholder {
-              /* lighten up the color of the text by 40%*/
-              filter: brightness(1.4);
-            }
-          }
-        }
-
-        .bg-picture {
-          background-color: #000;
-
-          img {
-            /* lets parent background-color bleed through and darken it */
-            opacity: 0.5;
-          }
-        }
-      }
-    }
-  }
+}
 </style>

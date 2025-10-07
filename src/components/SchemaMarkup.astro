@@ -1,0 +1,104 @@
+---
+import client from "@data/client.json";
+
+interface Props {
+  type?: "Organization" | "LocalBusiness" | "WebPage" | "Article";
+  title?: string;
+  description?: string;
+  image?: string;
+  datePublished?: string;
+  dateModified?: string;
+}
+
+const { 
+  type = "LocalBusiness",
+  title,
+  description,
+  image,
+  datePublished,
+  dateModified 
+} = Astro.props;
+
+const baseUrl = `https://${client.domain}`;
+
+// Organization/LocalBusiness Schema
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": type,
+  "name": client.name,
+  "description": client.description,
+  "url": baseUrl,
+  "logo": client.logo ? `${baseUrl}${client.logo}` : undefined,
+  "image": image ? `${baseUrl}${image}` : undefined,
+  "telephone": client.phoneForTel,
+  "email": client.email,
+  "foundingDate": client.founded,
+  "numberOfEmployees": client.employees,
+  "industry": client.industry,
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": `${client.address.lineOne}${client.address.lineTwo ? ', ' + client.address.lineTwo : ''}`,
+    "addressLocality": client.address.city,
+    "addressRegion": client.address.state,
+    "postalCode": client.address.zip,
+    "addressCountry": "US"
+  },
+  "geo": client.address.mapLink ? {
+    "@type": "GeoCoordinates",
+    "url": client.address.mapLink
+  } : undefined,
+  "openingHours": client.hours ? [
+    client.hours.monday !== "Closed" ? "Mo " + client.hours.monday : undefined,
+    client.hours.tuesday !== "Closed" ? "Tu " + client.hours.tuesday : undefined,
+    client.hours.wednesday !== "Closed" ? "We " + client.hours.wednesday : undefined,
+    client.hours.thursday !== "Closed" ? "Th " + client.hours.thursday : undefined,
+    client.hours.friday !== "Closed" ? "Fr " + client.hours.friday : undefined,
+    client.hours.saturday !== "Closed" ? "Sa " + client.hours.saturday : undefined,
+    client.hours.sunday !== "Closed" ? "Su " + client.hours.sunday : undefined,
+  ].filter(Boolean) : undefined,
+  "sameAs": Object.values(client.socials).filter(Boolean)
+};
+
+// WebPage Schema
+const webPageSchema = title ? {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": title,
+  "description": description,
+  "url": `${baseUrl}${Astro.url.pathname}`,
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": client.name,
+    "url": baseUrl
+  },
+  "about": {
+    "@type": type,
+    "name": client.name
+  },
+  "datePublished": datePublished,
+  "dateModified": dateModified || datePublished
+} : null;
+
+// Clean up undefined values
+const cleanSchema = (obj: any): any => {
+  if (Array.isArray(obj)) {
+    return obj.map(cleanSchema).filter(Boolean);
+  }
+  if (obj && typeof obj === 'object') {
+    const cleaned: any = {};
+    for (const [key, value] of Object.entries(obj)) {
+      if (value !== undefined && value !== null) {
+        cleaned[key] = cleanSchema(value);
+      }
+    }
+    return Object.keys(cleaned).length > 0 ? cleaned : undefined;
+  }
+  return obj;
+};
+
+const schemas = [organizationSchema, webPageSchema].filter(Boolean).map(cleanSchema);
+---
+
+{schemas.map((schema) => (
+  <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+))}

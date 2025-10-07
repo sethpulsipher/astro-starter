@@ -4,6 +4,7 @@ import type { GetImageResult } from 'astro';
 import client from "@data/client.json";
 import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
+import SchemaMarkup from "@components/SchemaMarkup.astro";
 import "@styles/root.less";
 import "@styles/dark.less";
 
@@ -21,10 +22,29 @@ type PreloadedImage = GetImageResult | ContentImage;
 interface Props {
   title: string;
   description: string;
-  preloadedImage?: PreloadedImage; // optional - passing a preloadedImage to BaseLayout will 1. preload the image and 2. use the image for og socials tags in the <head>
+  preloadedImage?: PreloadedImage;
+  keywords?: string;
+  author?: string;
+  schemaType?: "Organization" | "LocalBusiness" | "WebPage" | "Article";
+  datePublished?: string;
+  dateModified?: string;
+  noindex?: boolean;
 }
 
-const { description, title, preloadedImage } = Astro.props as Props;
+const { 
+  description, 
+  title, 
+  preloadedImage,
+  keywords = "",
+  author = client.name,
+  schemaType = "LocalBusiness",
+  datePublished,
+  dateModified,
+  noindex = false
+} = Astro.props as Props;
+
+const canonicalUrl = `https://${client.domain}${Astro.url.pathname}`;
+const ogImage = preloadedImage?.src || `https://${client.domain}/assets/images/og-default.jpg`;
 
 ---
 <!-- A fully fleshed-out <head>, dynamically changing based on client.json and the page front matter -->
@@ -38,23 +58,30 @@ const { description, title, preloadedImage } = Astro.props as Props;
             <meta http-equiv="X-UA-Compatible" content="IE=edge">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <meta name="description" content={description}>
-            <meta name="keywords" content="">
-            <link rel="canonical" href={`https://${client.domain}${Astro.url.pathname}`}>
+            <meta name="keywords" content={keywords}>
+            <meta name="author" content={author}>
+            {noindex && <meta name="robots" content="noindex, nofollow">}
+            <link rel="canonical" href={canonicalUrl}>
 
 
             <!-- If present, preloads the image passed as a prop -->
-            {preloadedImage && <link rel="preload" href={preloadedImage.src} as="image" />}
+            {preloadedImage && <link rel="preload" as="image" href={preloadedImage.src} />}
 
-            <!-- Social Media Display - generated automatically with the props passd to BaseLayout -->
+            <!-- Open Graph / Facebook -->
+            <meta property="og:type" content="website" />
+            <meta property="og:url" content={canonicalUrl} />
             <meta property="og:title" content={title} />
             <meta property="og:description" content={description} />
-            <meta property="og:type" content="website" />
-            <meta property="og:url" content={`https://${client.domain}${Astro.url.pathname}`} />
-            {
-              preloadedImage && 
-                <meta property="og:image" content={preloadedImage.src} /> 
-                <meta property="og:image:secure_url" content={preloadedImage.src} />
-            }
+            <meta property="og:image" content={ogImage} />
+            <meta property="og:image:secure_url" content={ogImage} />
+            <meta property="og:site_name" content={client.name} />
+            
+            <!-- Twitter -->
+            <meta name="twitter:card" content="summary_large_image" />
+            <meta name="twitter:url" content={canonicalUrl} />
+            <meta name="twitter:title" content={title} />
+            <meta name="twitter:description" content={description} />
+            <meta name="twitter:image" content={ogImage} />
                 
             <!-- Favicons -->
             <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png">
@@ -90,10 +117,56 @@ const { description, title, preloadedImage } = Astro.props as Props;
             }
             </title>
 
+            <!-- Schema Markup -->
+            <SchemaMarkup 
+              type={schemaType}
+              title={title}
+              description={description}
+              image={preloadedImage?.src}
+              datePublished={datePublished}
+              dateModified={dateModified}
+            />
+
+            <!-- Google Analytics -->
+            {client.googleAnalytics && (
+              <>
+                <script async src={`https://www.googletagmanager.com/gtag/js?id=${client.googleAnalytics}`}></script>
+                <script is:inline define:vars={{ gaId: client.googleAnalytics }}>
+                  window.dataLayer = window.dataLayer || [];
+                  function gtag(){dataLayer.push(arguments);}
+                  gtag('js', new Date());
+                  gtag('config', gaId);
+                </script>
+              </>
+            )}
+
+            <!-- Google Tag Manager -->
+            {client.googleTagManager && (
+              <script is:inline define:vars={{ gtmId: client.googleTagManager }}>
+                (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+                j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+                'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+                })(window,document,'script','dataLayer',gtmId);
+              </script>
+            )}
+
             <!-- Sitewide Scripts -->
             <script src="@js/nav.js"></script>
         </head>
         <body>
+            <!-- Google Tag Manager (noscript) -->
+            {client.googleTagManager && (
+              <noscript>
+                <iframe 
+                  src={`https://www.googletagmanager.com/ns.html?id=${client.googleTagManager}`}
+                  height="0" 
+                  width="0" 
+                  style="display:none;visibility:hidden">
+                </iframe>
+              </noscript>
+            )}
+            
             <!-- Screen reader skip main nav -->
             <a class="skip" aria-label="skip to main content" href="#main">Click To Skip To Main Content</a>
     
@@ -106,7 +179,7 @@ const { description, title, preloadedImage } = Astro.props as Props;
         </body>
 </html>
 
-<script is:inline>
+<script defer is:inline>
     // helper functions to toggle dark mode
     function enableDarkMode() {
       document.body.classList.add("dark-mode");

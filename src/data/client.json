@@ -1,18 +1,38 @@
 {
 	"name": "Example Company",
-	"email": "help@example.com",
+	"tagline": "Your Trusted Business Partner",
+	"description": "We provide exceptional services to help your business grow and succeed.",
+	"email": "hello@example.com",
 	"phoneForTel": "123-456-7890",
 	"phoneFormatted": "(123) 456-7890",
 	"address": {
-		"lineOne": "First Address Line",
-		"lineTwo": "Second Address Line",
-		"city": "City",
-		"state": "UT",
-		"zip": "84067",
+		"lineOne": "123 Business Street",
+		"lineTwo": "Suite 100",
+		"city": "Business City",
+		"state": "CA",
+		"zip": "90210",
 		"mapLink": "https://goo.gl/maps/UAQn4vuGDiwv7DV39"
 	},
-	"socials": {
-		"facebook": "https://www.facebook.com/profile.php?id=example"
+	"hours": {
+		"monday": "9:00 AM - 6:00 PM",
+		"tuesday": "9:00 AM - 6:00 PM",
+		"wednesday": "9:00 AM - 6:00 PM",
+		"thursday": "9:00 AM - 6:00 PM",
+		"friday": "9:00 AM - 6:00 PM",
+		"saturday": "10:00 AM - 4:00 PM",
+		"sunday": "Closed"
 	},
-	"domain": "www.example.com"
+	"socials": {
+		"facebook": "https://www.facebook.com/example",
+		"instagram": "https://www.instagram.com/example",
+		"linkedin": "https://www.linkedin.com/company/example",
+		"twitter": "https://www.twitter.com/example"
+	},
+	"domain": "www.example.com",
+	"logo": "/assets/images/logo.svg",
+	"founded": "2020",
+	"employees": "10-50",
+	"industry": "Professional Services",
+	"googleAnalytics": "",
+	"googleTagManager": ""
 }

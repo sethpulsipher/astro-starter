@@ -1,21 +1,40 @@
 {
-	"name": "astro-starter",
+	"name": "astro-business-template",
 	"type": "module",
-	"version": "0.1.0",
+	"version": "1.0.0",
+	"description": "A modern Astro template for business websites with CMS integration",
 	"scripts": {
-		"astro": "astro dev",
 		"dev": "astro dev",
 		"start": "astro dev",
-		"build": "astro build",
-		"preview": "astro preview"
+		"build": "astro check && astro build",
+		"preview": "astro preview",
+		"check": "astro check",
+		"lint": "prettier --check . && astro check",
+		"format": "prettier --write .",
+		"clean": "rm -rf dist .astro"
 	},
 	"dependencies": {
 		"@astrojs/check": "^0.9.4",
 		"@astrojs/sitemap": "^3.3.1",
+		"@tailwindcss/vite": "^4.1.13",
 		"astro": "^5.7.12",
 		"astro-icon": "^1.1.1",
 		"autoprefixer": "^10.4.20",
 		"less": "^4.2.0",
 		"typescript": "^5.6.3"
-	}
+	},
+	"devDependencies": {
+		"prettier": "^3.0.0",
+		"prettier-plugin-astro": "^0.12.0"
+	},
+	"keywords": [
+		"astro",
+		"business",
+		"template",
+		"cms",
+		"seo",
+		"responsive"
+	],
+	"author": "Your Name",
+	"license": "MIT"
 }

@@ -1,4 +1,4 @@
-/* CODESTITCH STYLES, RESET, HEADER/NAVIGATION AND FOOTER */
+@import "__utils.less";
 
 /*-- -------------------------- -->
 <---        Core Styles         -->
@@ -110,7 +110,8 @@
     font-family: "Roboto";
     font-weight: 400;
     font-display: swap;
-    src: local(""),
+    src:
+      local(""),
       url("/assets/fonts/roboto-v29-latin-regular.woff2") format("woff2"),
       /* Chrome 26+, Opera 23+, Firefox 39+ */
         url("/assets/fonts/roboto-v29-latin-regular.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
@@ -121,7 +122,8 @@
     font-family: "Roboto";
     font-weight: 700;
     font-display: swap;
-    src: local(""),
+    src:
+      local(""),
       url("/assets/fonts/roboto-v29-latin-700.woff2") format("woff2"),
       /* Chrome 26+, Opera 23+, Firefox 39+ */
         url("/assets/fonts/roboto-v29-latin-700.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
@@ -132,7 +134,8 @@
     font-family: "Roboto";
     font-weight: 900;
     font-display: swap;
-    src: local(""),
+    src:
+      local(""),
       url("/assets/fonts/roboto-v29-latin-900.woff2") format("woff2"),
       /* Chrome 26+, Opera 23+, Firefox 39+ */
         url("/assets/fonts/roboto-v29-latin-900.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
@@ -271,7 +274,9 @@
     .moon {
       z-index: 2;
       // Transition properties
-      transition: transform 0.3s, opacity 0.3s;
+      transition:
+        transform 0.3s,
+        opacity 0.3s;
 
       // fill: yellow; --> uncomment to change the color of the moon if needed
     }
@@ -281,7 +286,9 @@
       z-index: 1;
       // Transition property
       transform: translate(-50%, 100%);
-      transition: transform 0.3s, opacity 0.3s;
+      transition:
+        transform 0.3s,
+        opacity 0.3s;
     }
   }
 }
@@ -298,26 +305,5 @@
     &:hover {
       cursor: pointer;
     }
-  }
-}
-
-/* Utility classes */
-@media only screen and (min-width: 0rem) {
-  .hide-on-mobile {
-    display: none;
-  }
-
-  .hide-on-desktop {
-    display: block;
-  }
-}
-/* Desktop - 1024px */
-@media only screen and (min-width: 64rem) {
-  .hide-on-mobile {
-    display: block;
-  }
-
-  .hide-on-desktop {
-    display: none;
   }
 }

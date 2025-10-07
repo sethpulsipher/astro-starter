@@ -1,0 +1,44 @@
+[
+    {
+        "id": "service-1",
+        "title": "Professional Consulting",
+        "description": "Expert guidance to help your business reach its full potential with strategic planning and implementation.",
+        "icon": "/assets/svgs/service1.svg",
+        "features": [
+            "Strategic Planning",
+            "Market Analysis",
+            "Growth Strategies",
+            "Performance Optimization"
+        ],
+        "price": "Starting at $500",
+        "link": "/services/consulting"
+    },
+    {
+        "id": "service-2",
+        "title": "Digital Solutions",
+        "description": "Modern digital tools and platforms to streamline your operations and enhance customer experience.",
+        "icon": "/assets/svgs/service2.svg",
+        "features": [
+            "Website Development",
+            "Digital Marketing",
+            "E-commerce Solutions",
+            "Analytics & Reporting"
+        ],
+        "price": "Starting at $1,000",
+        "link": "/services/digital"
+    },
+    {
+        "id": "service-3",
+        "title": "Business Support",
+        "description": "Comprehensive support services to keep your business running smoothly and efficiently.",
+        "icon": "/assets/svgs/service3.svg",
+        "features": [
+            "Administrative Support",
+            "Customer Service",
+            "Process Optimization",
+            "Training & Development"
+        ],
+        "price": "Starting at $300",
+        "link": "/services/support"
+    }
+]

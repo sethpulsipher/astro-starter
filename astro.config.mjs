@@ -3,7 +3,9 @@ import sitemap from "@astrojs/sitemap";
 import icon from "astro-icon";
 
 export default defineConfig({
-  site: "https://www.yourwebsite.com", // ToDo: update me!
+  // ToDo: update me!
+  site: "https://www.yourwebsite.com",
+
   integrations: [
     icon(),
     sitemap(),
