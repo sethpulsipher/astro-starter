@@ -1,0 +1,71 @@
+---
+export interface Props {
+  links: Array<{
+    text: string;
+    href?: string;
+  }>;
+}
+
+const { links } = Astro.props;
+---
+
+<nav aria-label="Breadcrumbs" class="breadcrumbs">
+  <ul>
+    {
+      links.map((link, index) => {
+        const isLast = index === links.length - 1;
+        return (
+          <li>
+            {isLast ? (
+              <span aria-current="page">{link.text}</span>
+            ) : (
+              <a href={link.href || "/"}>{link.text}</a>
+            )}
+          </li>
+        );
+      })
+    }
+  </ul>
+</nav>
+
+<style lang="less">
+  .breadcrumbs {
+    position: relative;
+    margin-top: (16/16rem);
+
+    ul {
+      font-size: 0; // Removes whitespace between inline-block elements
+    }
+
+    li {
+      display: inline-block;
+      font-weight: 600;
+
+      // add separator after each item except the last
+      &:not(:last-child)::after {
+        content: "›";
+        color: #fff;
+        margin: 0 1rem;
+      }
+    }
+
+    a {
+      padding: 0.2rem 0; // Better touch support
+      text-decoration: none; // Remove underline
+      font-size: (20/16rem);
+      color: #fff;
+      margin-right: (32/16rem);
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+
+    span {
+      cursor: default; // Prevent mouse change
+      margin-left: 0;
+      font-size: (20/16rem);
+      color: var(--primary);
+    }
+  }
+</style>

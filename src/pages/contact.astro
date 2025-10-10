@@ -1,36 +1,37 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
-import Landing from "@components/Landing.astro";
+import Banner from "@components/Banner.astro";
 import ContactForm from "@components/ContactForm.astro";
 import CTA from "@components/CTA.astro";
 import client from "@data/client.json";
 
-// Optimize our landing image and pass it as props to the BaseLayout (for preloading) and Landing (for rendering)
-import landingImage from "@assets/images/landing.jpg";
+// Optimize our Banner image and pass it as props to the BaseLayout (for preloading) and Banner (for rendering)
+import BannerImage from "@assets/images/Banner.jpg";
 import { getImage } from "astro:assets";
-const optimizedImage = await getImage({ src: landingImage, format: "avif" });
+const optimizedImage = await getImage({ src: BannerImage, format: "avif" });
 ---
 
 <BaseLayout
   title="Contact Us"
-  description={`Get in touch with ${client.name}. We're here to help with your business needs. Contact us today for a free consultation.`}
+  description="description"
   preloadedImage={optimizedImage}
-  keywords="contact, consultation, business services, get quote"
   schemaType="WebPage"
 >
-  <Landing title="Contact Us" image={optimizedImage} />
+  <Banner title="Contact Us" image={optimizedImage} />
 
   <!-- ============================================ -->
   <!--                Contact Info                  -->
   <!-- ============================================ -->
-  
+
   <section id="contact-info" class="contact-info-section">
     <div class="container">
       <div class="info-grid">
         <div class="info-card">
           <div class="info-icon">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-              <path d="M22 16.92V19.92C22 20.52 21.52 21 20.92 21C9.4 21 0 11.6 0 0.08C0 -0.52 0.48 -1 1.08 -1H4.08C4.68 -1 5.16 -0.52 5.16 0.08C5.16 2.08 5.44 4.04 6 5.92C6.12 6.32 6 6.76 5.72 7.04L4.12 8.64C5.32 11.36 7.64 13.68 10.36 14.88L11.96 13.28C12.24 13 12.68 12.88 13.08 13C14.96 13.56 16.92 13.84 18.92 13.84C19.52 13.84 20 14.32 20 14.92V17.92C20 18.52 19.52 19 18.92 19Z" fill="currentColor"/>
+              <path
+                d="M22 16.92V19.92C22 20.52 21.52 21 20.92 21C9.4 21 0 11.6 0 0.08C0 -0.52 0.48 -1 1.08 -1H4.08C4.68 -1 5.16 -0.52 5.16 0.08C5.16 2.08 5.44 4.04 6 5.92C6.12 6.32 6 6.76 5.72 7.04L4.12 8.64C5.32 11.36 7.64 13.68 10.36 14.88L11.96 13.28C12.24 13 12.68 12.88 13.08 13C14.96 13.56 16.92 13.84 18.92 13.84C19.52 13.84 20 14.32 20 14.92V17.92C20 18.52 19.52 19 18.92 19Z"
+                fill="currentColor"></path>
             </svg>
           </div>
           <h3>Phone</h3>
@@ -43,8 +44,18 @@ const optimizedImage = await getImage({ src: landingImage, format: "avif" });
         <div class="info-card">
           <div class="info-icon">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-              <path d="M4 4H20C21.1 4 22 4.9 22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              <polyline points="22,6 12,13 2,6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path
+                d="M4 4H20C21.1 4 22 4.9 22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4Z"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"></path>
+              <polyline
+                points="22,6 12,13 2,6"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"></polyline>
             </svg>
           </div>
           <h3>Email</h3>
@@ -57,24 +68,53 @@ const optimizedImage = await getImage({ src: landingImage, format: "avif" });
         <div class="info-card">
           <div class="info-icon">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-              <path d="M21 10C21 17 12 23 12 23S3 17 3 10C3 5.03 7.03 1 12 1S21 5.03 21 10Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              <circle cx="12" cy="10" r="3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path
+                d="M21 10C21 17 12 23 12 23S3 17 3 10C3 5.03 7.03 1 12 1S21 5.03 21 10Z"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"></path>
+              <circle
+                cx="12"
+                cy="10"
+                r="3"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"></circle>
             </svg>
           </div>
           <h3>Address</h3>
           <p>Visit our office</p>
-          <a href={client.address.mapLink} target="_blank" rel="noopener" class="contact-link">
-            {client.address.lineOne}<br>
-            {client.address.lineTwo && `${client.address.lineTwo}<br>`}
-            {client.address.city}, {client.address.state} {client.address.zip}
+          <a
+            href={client.address.mapLink}
+            target="_blank"
+            rel="noopener"
+            class="contact-link"
+          >
+            {client.address.lineOne}
+            <br />
+            {client.address.lineTwo && `${client.address.lineTwo}`}
+            {client.address.city}, {client.address.state}
+            {client.address.zip}
           </a>
         </div>
 
         <div class="info-card">
           <div class="info-icon">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-              <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
-              <polyline points="12,6 12,12 16,14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle
+                cx="12"
+                cy="12"
+                r="10"
+                stroke="currentColor"
+                stroke-width="2"></circle>
+              <polyline
+                points="12,6 12,12 16,14"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"></polyline>
             </svg>
           </div>
           <h3>Business Hours</h3>
@@ -104,142 +144,144 @@ const optimizedImage = await getImage({ src: landingImage, format: "avif" });
 </BaseLayout>
 
 <style lang="less">
-/* Contact Info Section */
-@media only screen and (min-width: 0em) {
-  .contact-info-section {
-    padding: var(--sectionPadding);
-    background: #f8f9fa;
+  /* Contact Info Section */
+  @media only screen and (min-width: 0em) {
+    .contact-info-section {
+      padding: var(--sectionPadding);
+      background: #f8f9fa;
 
-    .container {
-      width: 100%;
-      max-width: (1280/16rem);
-      margin: auto;
-    }
-
-    .info-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: (32/16rem);
-    }
-
-    .info-card {
-      background: #fff;
-      padding: (32/16rem);
-      border-radius: (12/16rem);
-      text-align: center;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-
-      &:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+      .container {
+        width: 100%;
+        max-width: (1280/16rem);
+        margin: auto;
       }
-    }
 
-    .info-icon {
-      width: (64/16rem);
-      height: (64/16rem);
-      margin: 0 auto (24/16rem);
-      background: var(--primary);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-    }
-
-    .info-card h3 {
-      font-size: (24/16rem);
-      font-weight: 700;
-      margin-bottom: (8/16rem);
-      color: var(--headerColor);
-    }
-
-    .info-card p {
-      margin-bottom: (16/16rem);
-      color: var(--bodyTextColor);
-      opacity: 0.8;
-    }
-
-    .contact-link {
-      color: var(--primary);
-      text-decoration: none;
-      font-weight: 600;
-      transition: color 0.3s ease;
-
-      &:hover {
-        color: var(--primaryLight);
+      .info-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: (32/16rem);
       }
-    }
 
-    .hours-list {
-      text-align: left;
-      max-width: (200/16rem);
-      margin: 0 auto;
-    }
+      .info-card {
+        background: #fff;
+        padding: (32/16rem);
+        border-radius: (12/16rem);
+        text-align: center;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        transition:
+          transform 0.3s ease,
+          box-shadow 0.3s ease;
 
-    .hours-item {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: (8/16rem);
-      font-size: (14/16rem);
+        &:hover {
+          transform: translateY(-4px);
+          box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+        }
+      }
 
-      span:first-child {
-        font-weight: 600;
+      .info-icon {
+        width: (64/16rem);
+        height: (64/16rem);
+        margin: 0 auto (24/16rem);
+        background: var(--primary);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+      }
+
+      .info-card h3 {
+        font-size: (24/16rem);
+        font-weight: 700;
+        margin-bottom: (8/16rem);
         color: var(--headerColor);
       }
 
-      span:last-child {
+      .info-card p {
+        margin-bottom: (16/16rem);
         color: var(--bodyTextColor);
+        opacity: 0.8;
+      }
+
+      .contact-link {
+        color: var(--primary);
+        text-decoration: none;
+        font-weight: 600;
+        transition: color 0.3s ease;
+
+        &:hover {
+          color: var(--primaryLight);
+        }
+      }
+
+      .hours-list {
+        text-align: left;
+        max-width: (200/16rem);
+        margin: 0 auto;
+      }
+
+      .hours-item {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: (8/16rem);
+        font-size: (14/16rem);
+
+        span:first-child {
+          font-weight: 600;
+          color: var(--headerColor);
+        }
+
+        span:last-child {
+          color: var(--bodyTextColor);
+        }
       }
     }
   }
-}
 
-/* Tablet - 768px */
-@media only screen and (min-width: 48em) {
-  .contact-info-section {
-    .info-grid {
-      grid-template-columns: repeat(2, 1fr);
-      gap: (40/16rem);
+  /* Tablet - 768px */
+  @media only screen and (min-width: 48em) {
+    .contact-info-section {
+      .info-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: (40/16rem);
+      }
     }
   }
-}
 
-/* Desktop - 1024px */
-@media only screen and (min-width: 64em) {
-  .contact-info-section {
-    .info-grid {
-      grid-template-columns: repeat(4, 1fr);
+  /* Desktop - 1024px */
+  @media only screen and (min-width: 64em) {
+    .contact-info-section {
+      .info-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
     }
   }
-}
 
-/* Dark Mode */
-body.dark-mode {
-  .contact-info-section {
-    background: var(--dark);
+  /* Dark Mode */
+  body.dark-mode {
+    .contact-info-section {
+      background: var(--dark);
 
-    .info-card {
-      background: var(--medium);
-    }
+      .info-card {
+        background: var(--medium);
+      }
 
-    .info-card h3 {
-      color: var(--bodyTextColorWhite);
-    }
+      .info-card h3 {
+        color: var(--bodyTextColorWhite);
+      }
 
-    .info-card p {
-      color: var(--bodyTextColorWhite);
-    }
+      .info-card p {
+        color: var(--bodyTextColorWhite);
+      }
 
-    .hours-item span:first-child {
-      color: var(--bodyTextColorWhite);
-    }
+      .hours-item span:first-child {
+        color: var(--bodyTextColorWhite);
+      }
 
-    .hours-item span:last-child {
-      color: var(--bodyTextColorWhite);
-      opacity: 0.8;
+      .hours-item span:last-child {
+        color: var(--bodyTextColorWhite);
+        opacity: 0.8;
+      }
     }
   }
-}
 </style>

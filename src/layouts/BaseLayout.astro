@@ -6,7 +6,6 @@ import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
 import SchemaMarkup from "@components/SchemaMarkup.astro";
 import "@styles/root.less";
-import "@styles/dark.less";
 
 // Define a type for images from the content collection
 type ContentImage = {
@@ -23,8 +22,6 @@ interface Props {
   title: string;
   description: string;
   preloadedImage?: PreloadedImage;
-  keywords?: string;
-  author?: string;
   schemaType?: "Organization" | "LocalBusiness" | "WebPage" | "Article";
   datePublished?: string;
   dateModified?: string;
@@ -35,12 +32,9 @@ const {
   description, 
   title, 
   preloadedImage,
-  keywords = "",
-  author = client.name,
   schemaType = "LocalBusiness",
   datePublished,
   dateModified,
-  noindex = false
 } = Astro.props as Props;
 
 const canonicalUrl = `https://${client.domain}${Astro.url.pathname}`;
@@ -51,16 +45,17 @@ const ogImage = preloadedImage?.src || `https://${client.domain}/assets/images/o
 <html lang="en">
         <head>
             <!-- View Transitions support -->
-            <ClientRouter />
+            <!-- <ClientRouter /> -->
 
             <!-- Standard meta tags -->
             <meta charset="UTF-8">
             <meta http-equiv="X-UA-Compatible" content="IE=edge">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <meta name="description" content={description}>
-            <meta name="keywords" content={keywords}>
-            <meta name="author" content={author}>
-            {noindex && <meta name="robots" content="noindex, nofollow">}
+            <meta name="keywords" content="">
+            <meta name="author" content={client.name}>
+            <meta name="generator" content={Astro.generator} />
+            <!-- {noindex && <meta name="robots" content="noindex, nofollow">} -->
             <link rel="canonical" href={canonicalUrl}>
 
 
@@ -95,27 +90,13 @@ const ogImage = preloadedImage?.src || `https://${client.domain}/assets/images/o
             <!-- Preload key assets -->
             <!-- <link rel="preload" as="image" href="/assets/images/logo-black.png" /> -->
             <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/roboto-v29-latin-regular.woff2" crossorigin />
-            <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/roboto-v29-latin-bold.woff2" crossorigin />
-            
-            <!-- For home page, use service keywords for the title, including location for SEO.
-            Other pages should just include the page name.
-            
-            EXAMPLE:
-            Home page - House Painting Contractors | Painters and Co. | TestCity, WA
-            About Page - About us | Painters and Co.
-            -->
-            <title>
-                {Astro.url.pathname === "/" ?  (`${ title }
-                |
-                ${ client.name }
-                |
-                ${ client.address.city },
-                ${ client.address.state }`) :
-                (`${ title }
-                    |
-                    ${ client.name }`)
-            }
-            </title>
+            <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/roboto-v29-latin-700.woff2" crossorigin />
+      
+            <!-- Sitewide Scripts -->
+            <script src="@js/nav.js"></script>
+
+            <slot name="head"></slot>
+            <title>{title}</title>
 
             <!-- Schema Markup -->
             <SchemaMarkup 
@@ -151,8 +132,6 @@ const ogImage = preloadedImage?.src || `https://${client.domain}/assets/images/o
               </script>
             )}
 
-            <!-- Sitewide Scripts -->
-            <script src="@js/nav.js"></script>
         </head>
         <body>
             <!-- Google Tag Manager (noscript) -->
@@ -213,5 +192,5 @@ const ogImage = preloadedImage?.src || `https://${client.domain}/assets/images/o
   
     setTheme();
   
-    document.addEventListener("astro:after-swap", setTheme); // For View Transitions purposes - astro:after-swap ensures that the theme is kept after navigating to a new page.
+    // document.addEventListener("astro:after-swap", setTheme); // For View Transitions purposes - astro:after-swap ensures that the theme is kept after navigating to a new page.
   </script>

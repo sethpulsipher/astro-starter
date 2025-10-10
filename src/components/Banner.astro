@@ -1,0 +1,32 @@
+---
+import Breadcrumb from "./Breadcrumb.astro";
+import { Picture } from "astro:assets";
+const { title, image } = Astro.props;
+
+// Get the current path without leading or trailing slashes, then capitalize the first letter
+// - This is useful for generating links dynamically
+const currentPath = Astro.url.pathname
+  .replace(/^\//, "")
+  .replace(/\/$/, "")
+  .replace(/^\w/, (c) => c.toUpperCase());
+---
+
+<!-- ============================================ --><!--                   Banner                     --><!-- ============================================ -->
+<div id="banner">
+  <div class="container">
+    <span class="int-title">{title}</span>
+    <Breadcrumb links={[{ href: "/", text: "Home" }, { text: currentPath }]} />
+  </div>
+  <!--Background Image-->
+  <Picture
+    src={image.src}
+    alt={image.alt || title || "Banner Image"}
+    pictureAttributes={{ class: "background" }}
+    width="1280"
+    height="738"
+    formats={["avif", "webp"]}
+    aria-hidden="true"
+    decoding="async"
+    loading="eager"
+  />
+</div>

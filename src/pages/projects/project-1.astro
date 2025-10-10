@@ -1,12 +1,12 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
 import CTA from "@components/CTA.astro";
-import Landing from "@components/Landing.astro";
+import Banner from "@components/Banner.astro";
 
-// Optimize our landing image and pass it as props to the BaseLayout (for preloading) and Landing (for rendering)
-import landingImage from "@assets/images/landing.jpg"; // <-- THE PATH TO THE ASSET YOU WANT TO PRELOAD - The asset must live in src
+// Optimize our Banner image and pass it as props to the BaseLayout (for preloading) and Banner (for rendering)
+import BannerImage from "@assets/images/Banner.jpg"; // <-- THE PATH TO THE ASSET YOU WANT TO PRELOAD - The asset must live in src
 import { getImage } from "astro:assets";
-const optimizedImage = await getImage({ src: landingImage, format: "avif" });
+const optimizedImage = await getImage({ src: BannerImage, format: "avif" });
 ---
 
 <BaseLayout
@@ -15,10 +15,10 @@ const optimizedImage = await getImage({ src: landingImage, format: "avif" });
   preloadedImage={optimizedImage}
 >
   <!-- ============================================ -->
-  <!--                    LANDING                   -->
+  <!--                    Banner                   -->
   <!-- ============================================ -->
 
-  <Landing title="Project 1" image={optimizedImage} />
+  <Banner title="Project 1" image={optimizedImage} />
 
   <!-- ============================================ -->
   <!--                   Gallery                    -->
