@@ -1,14 +1,14 @@
   <h3 align="center">Astro Starter Kit - Decap CMS</h3>
 
   <p align="center">
-    This intermediate kit includes a pre-configured Astro setup, along with five pages filled with CodeStitch components. Everything is ready to go right from the start, offering a fantastic introduction to the advantages of a Static Site Generator, complete with LESS preprocessing and a blog powered by Decap CMS. This kit also leverages the power of a few Astro tools such as, but not limited to, Content Collections, View Transitions, Astro components, scoped styling and scripting etc.
+    This intermediate kit includes a pre-configured Astro setup, along with five pages filled with CodeStitch components. Everything is ready to go right from the start, offering a fantastic introduction to the advantages of a Static Site Generator, complete with LESS preprocessing and branches with more features like a blog powered by Decap CMS. This kit also leverages the power of a few Astro tools such as, but not limited to, Content Collections, View Transitions, Astro components, scoped styling and scripting etc.
     <br/>
     <br/>
-    <a href="https://intermediate-astro-kit-decap-cms.netlify.app" target="_blank">View Live Result</a>
+    <a href="https://astro-starter.netlify.app" target="_blank">View Live Result</a>
   </p>
 
   <p align="center">
-    Created and maintained by <a href="https://github.com/BuckyBuck135" target="_blank">BuckyBuck135</a>
+    Created and maintained by <a href="https://github.com/sethpulsipher" target="_blank">Sethipher</a>
   </p>
 
 ## Table of Contents
@@ -50,12 +50,15 @@ vanilla component library</a>. This kit aims to get any project off the ground i
 
 ## Getting Started
 
+> [!Info]
+> Alternatively, you can use npm, I just like using pnpm
+
 1. At the top right of the GitHub Repository, click the green _Use this template_ button,
    then click _Create a new repository_.
 2. Follow the instructions to create a new repository, using this repo as a template.
 3. When created, clone the repository to your local machine.
-4. Run `npm install` to install all dependencies.
-5. Run `npm run dev` to start the project and spin up a development server on `localhost:4321`
+4. Run `pnpm i` or `npm i` to install all dependencies.
+5. Run `pnpm dev` or `npm run dev` to start the project and spin up a development server on `localhost:4321`
 
 Next, it is recommended to update `data/client.json` with some new information about this project. Through the power of templating, the
 project's `<head>` and contact information will automatically be filled out, providing a first peek into some of the benefits of SSGs.
@@ -719,7 +722,6 @@ Fill in the 3 input fields:
 - Github repository: it has to be in a `user-or-org/repository-name` format. e.g. `BuckyBuck135/testing-decapbridge`
 - Github access token.
   To create a personal access token in GitHub, follow these steps:
-
   1. Log into your Github account.
   2. Click on your profile picture (top right) (not the repository profile), and click the “Settings” link.
   3. Scroll down and click the “Developer Settings” link.
