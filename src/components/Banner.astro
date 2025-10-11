@@ -1,7 +1,7 @@
 ---
 import Breadcrumb from "./Breadcrumb.astro";
 import { Picture } from "astro:assets";
-const { title, image } = Astro.props;
+const { title, image, links } = Astro.props;
 
 // Get the current path without leading or trailing slashes, then capitalize the first letter
 // - This is useful for generating links dynamically
@@ -9,13 +9,34 @@ const currentPath = Astro.url.pathname
   .replace(/^\//, "")
   .replace(/\/$/, "")
   .replace(/^\w/, (c) => c.toUpperCase());
+
+// Define default links for the breadcrumb navigation
+// Home > Current Path URL
+// Issue with defaultsLinks: if we are 3 layers deep (/prjects/project-1),
+// it will only show two links, but like this: Home > Projects/Project-1
+
+const defaultLinks = [{ href: "/", text: "Home" }, { text: currentPath }];
+
+// Ensure "Home" is always present. If the caller passes links, prepend Home when missing.
+function ensureHome(linksArr) {
+  if (!Array.isArray(linksArr)) return defaultLinks;
+  const hasHome = linksArr.some(
+    (l) => l && (l.href === "/" || String(l.text).toLowerCase() === "home")
+  );
+  const out = [...linksArr];
+  if (!hasHome) out.unshift({ href: "/", text: "Home" });
+  return out;
+}
+
+// If no links are provided, use the default links
+const breadcrumbLinks = ensureHome(links ?? defaultLinks);
 ---
 
 <!-- ============================================ --><!--                   Banner                     --><!-- ============================================ -->
 <div id="banner">
   <div class="container">
     <span class="int-title">{title}</span>
-    <Breadcrumb links={[{ href: "/", text: "Home" }, { text: currentPath }]} />
+    <Breadcrumb links={breadcrumbLinks} />
   </div>
   <!--Background Image-->
   <Picture

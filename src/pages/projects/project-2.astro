@@ -18,7 +18,11 @@ const optimizedImage = await getImage({ src: BannerImage, format: "avif" });
   <!--                    Banner                   -->
   <!-- ============================================ -->
 
-  <Banner title="Project 2" image={optimizedImage} />
+  <Banner
+    title="Project 2"
+    image={optimizedImage}
+    links={[{ text: "Project 2" }]}
+  />
 
   <!-- ============================================ -->
   <!--                   Gallery                    -->
