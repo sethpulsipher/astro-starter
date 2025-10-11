@@ -1,16 +1,14 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
-import Services from "@components/Services.astro";
 import CTA from "@components/CTA.astro";
 import FAQ from "@components/FAQ.astro";
 
 import client from "@data/client.json";
 
 // Optimize our landing image and pass it as props to the BaseLayout (for preloading) and Landing (for rendering)
-import landing from "@assets/images/hero.jpg";
-import { getImage, Image } from "astro:assets";
-import { Picture } from "astro:assets";
-const optimizedImage = await getImage({ src: landing, format: "avif" });
+import heroImg from "@assets/images/hero.jpg";
+import { getImage } from "astro:assets";
+const optimizedHeroImg = await getImage({ src: heroImg, format: "avif" });
 
 // 1. Import critical styles directly. Astro will bundle and inject these
 // as a blocking <link> tag in the <head>, which is exactly what you want
@@ -23,7 +21,7 @@ import localStylesURL from "@styles/local.less?url";
 <BaseLayout
   title={`${client.tagline} | ${client.name}`}
   description={client.description}
-  preloadedImage={optimizedImage}
+  preloadedImage={optimizedHeroImg}
 >
   <Fragment slot="head">
     {
@@ -54,7 +52,7 @@ import localStylesURL from "@styles/local.less?url";
   <!--                    Hero                      -->
   <!-- ============================================ -->
 
-  <section id="hero" style={`--hero-bg-url: url(${optimizedImage?.src})`}>
+  <section id="hero">
     <div class="container">
       <span class="topper">CodeStitch Presents</span>
       <h1 class="title">Main thing we do with most important keyword phrase</h1>
@@ -67,10 +65,10 @@ import localStylesURL from "@styles/local.less?url";
 
     <picture class="background">
       <source media="(max-width: 600px)" srcset="/assets/images/hero-m.jpg" />
-      <source media="(min-width: 601px)" srcset={optimizedImage?.src} />
+      <source media="(min-width: 601px)" srcset={optimizedHeroImg?.src} />
       <img
         aria-hidden="true"
-        src={optimizedImage?.src}
+        src={optimizedHeroImg?.src}
         alt="kitchen"
         width="1280"
         height="738"
@@ -608,5 +606,3 @@ import localStylesURL from "@styles/local.less?url";
 
   <CTA />
 </BaseLayout>
-
-<style lang="less" define:vars={{ landingBgURL: optimizedImage?.src }}></style>
