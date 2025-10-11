@@ -11,7 +11,7 @@
 
 /* Mobile - 360px */
 @media only screen and (min-width: 0rem) {
-  #hero-143 {
+  #hero {
     /* Centers button */
     text-align: center;
     /* 144px - 300px - leaving extra space for the navigation */
@@ -145,8 +145,8 @@
 
 /* Desktop - 1300px (To make image background parallax) */
 @media only screen and (min-width: 81.25rem) {
-  #hero-143 {
-    background: var(--hero-bg-url);
+  #hero {
+    background: url(/assets/images/hero.jpg);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -164,7 +164,7 @@
 /* Dark Mode */
 @media only screen and (min-width: 0rem) {
   body.dark-mode {
-    #hero-143 {
+    #hero {
       &:before,
       &:after {
         background: var(--dark);
