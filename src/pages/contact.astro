@@ -1,4 +1,10 @@
 ---
+// import Phone from "@iconify-icons/mdi/phone";
+import Phone from "@assets/svgs/phone.svg";
+import Email from "@assets/svgs/email.svg";
+import Pin from "@assets/svgs/pin.svg";
+import Clock from "@assets/svgs/clock.svg";
+
 import BaseLayout from "@layouts/BaseLayout.astro";
 import Banner from "@components/Banner.astro";
 import ContactForm from "@components/ContactForm.astro";
@@ -28,11 +34,7 @@ const optimizedImage = await getImage({ src: BannerImage, format: "avif" });
       <div class="info-grid">
         <div class="info-card">
           <div class="info-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-              <path
-                d="M22 16.92V19.92C22 20.52 21.52 21 20.92 21C9.4 21 0 11.6 0 0.08C0 -0.52 0.48 -1 1.08 -1H4.08C4.68 -1 5.16 -0.52 5.16 0.08C5.16 2.08 5.44 4.04 6 5.92C6.12 6.32 6 6.76 5.72 7.04L4.12 8.64C5.32 11.36 7.64 13.68 10.36 14.88L11.96 13.28C12.24 13 12.68 12.88 13.08 13C14.96 13.56 16.92 13.84 18.92 13.84C19.52 13.84 20 14.32 20 14.92V17.92C20 18.52 19.52 19 18.92 19Z"
-                fill="currentColor"></path>
-            </svg>
+            <Phone width={24} height={24} aria-hidden="true" />
           </div>
           <h3>Phone</h3>
           <p>Call us directly</p>
@@ -43,20 +45,7 @@ const optimizedImage = await getImage({ src: BannerImage, format: "avif" });
 
         <div class="info-card">
           <div class="info-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-              <path
-                d="M4 4H20C21.1 4 22 4.9 22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4Z"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"></path>
-              <polyline
-                points="22,6 12,13 2,6"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"></polyline>
-            </svg>
+            <Email width={24} height={24} aria-hidden="true" />
           </div>
           <h3>Email</h3>
           <p>Send us a message</p>
@@ -67,22 +56,7 @@ const optimizedImage = await getImage({ src: BannerImage, format: "avif" });
 
         <div class="info-card">
           <div class="info-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-              <path
-                d="M21 10C21 17 12 23 12 23S3 17 3 10C3 5.03 7.03 1 12 1S21 5.03 21 10Z"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"></path>
-              <circle
-                cx="12"
-                cy="10"
-                r="3"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"></circle>
-            </svg>
+            <Pin width={24} height={24} aria-hidden="true" />
           </div>
           <h3>Address</h3>
           <p>Visit our office</p>
@@ -102,20 +76,7 @@ const optimizedImage = await getImage({ src: BannerImage, format: "avif" });
 
         <div class="info-card">
           <div class="info-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-              <circle
-                cx="12"
-                cy="12"
-                r="10"
-                stroke="currentColor"
-                stroke-width="2"></circle>
-              <polyline
-                points="12,6 12,12 16,14"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"></polyline>
-            </svg>
+            <Clock width={24} height={24} aria-hidden="true" />
           </div>
           <h3>Business Hours</h3>
           <p>When we're available</p>
