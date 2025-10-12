@@ -50,15 +50,12 @@ vanilla component library</a>. This kit aims to get any project off the ground i
 
 ## Getting Started
 
-> [!Info]
-> Alternatively, you can use npm, I just like using pnpm
-
 1. At the top right of the GitHub Repository, click the green _Use this template_ button,
    then click _Create a new repository_.
 2. Follow the instructions to create a new repository, using this repo as a template.
 3. When created, clone the repository to your local machine.
-4. Run `pnpm i` or `npm i` to install all dependencies.
-5. Run `pnpm dev` or `npm run dev` to start the project and spin up a development server on `localhost:4321`
+4. Run `pnpm i` to install all dependencies.
+5. Run `pnpm dev` to start the project and spin up a development server on `localhost:4321`
 
 Next, it is recommended to update `data/client.json` with some new information about this project. Through the power of templating, the
 project's `<head>` and contact information will automatically be filled out, providing a first peek into some of the benefits of SSGs.
@@ -79,7 +76,7 @@ Only the vanilla web technologies are _required_ before using this kit, with som
 
 ## Features
 
-- Runs on Astro v5
+- Runs on **Astro v5**
 - Decap CMS integration with a blog ready to go. Give access to your client via Netlify Identity to allow them to write blog posts. Their edits will be pushed to the repository, triggering a re-build automatically.
 - Astro's View Transitions integration
 - Components, props and scoped styles, as demonstrated in `/src/components/Landing.astro` for example
@@ -94,7 +91,8 @@ Only the vanilla web technologies are _required_ before using this kit, with som
 This kit ships the following packages:
 
 - [Astro Icon](https://www.astroicon.dev/) - Astro Icon is a straightforward icon system for the Astro framework.
-- [Autoprefixer](https://www.npmjs.com/package/autoprefixer) - PostCSS plugin to parse CSS and add vendor prefixes to CSS rules using values from Can I Use. It is recommended by Google and used in Twitter and Alibaba.
+  - [Iconify](https://iconify.design/) - The open source **Icon Set Framework** used by Astro Icon
+- [Autoprefixer](https://www.npmjs.com/package/autoprefixer) - PostCSS plugin to parse CSS and add vendor prefixes to CSS rules using values from Can I Use. It is recommended by Google and used in many enterprise software like Twitter and Alibaba.
 - [LESS](https://www.npmjs.com/package/less) - Less makes a few convenient additions to the CSS language, but you can also simply write standard CSS if you wish.
 
 <a name="projectStructure"></a>
@@ -104,10 +102,10 @@ This kit ships the following packages:
 Astro leverages an opinionated folder layout for your project. Every Astro project root should include the following directories and files:
 
 - `src/*` - Your project source code (components, pages, styles, etc.)
-- `public/*` - Your non-code, unprocessed assets (fonts, icons, etc.)
-- `package.json` - A project manifest.
-- `astro.config.mjs` - An Astro configuration file. (recommended)
-- `tsconfig.json` - A TypeScript configuration file. (recommended)
+- `public/*` - Non-code, unprocessed _public_ assets (fonts, icons, etc.)
+- `package.json` - Project manifesto.
+- `astro.config.mjs` - An Astro configuration file.
+- `tsconfig.json` - A TypeScript configuration file.
 
 <a name="projectTree"></a>
 
@@ -228,13 +226,13 @@ Pages are a special kind of component used to create new pages on your site. A p
 
 It is a common convention to store your CSS, Less or Sass files in a `src/styles` directory.
 
-#### `package.json` and `package-lock.json`
+#### `package.json` and `pnpm-lock.json`
 
 The project's manifest. Standard NodeJS package files, containing the dependencies needed for the project to work.
 
 #### `node_modules/*`
 
-Created after you run `npm install`. This directory contains the code for all the dependencies that power this kit. It comes as standard with any NodeJS-powered project, much like the `package.json` and `package-lock.json` files. You can safely ignore this directory in your day-to-day work.
+Created after you run `pnpm i`. This directory contains the code for all the dependencies that power this kit. It comes as standard with any NodeJS-powered project, much like the `package.json` and `pnpm-lock.json` files. You can safely ignore this directory in your day-to-day work.
 
 #### `dist/`
 
