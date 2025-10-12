@@ -1,9 +1,5 @@
 ---
-// import Phone from "@iconify-icons/mdi/phone";
-import Phone from "@assets/svgs/phone.svg";
-import Email from "@assets/svgs/email.svg";
-import Pin from "@assets/svgs/pin.svg";
-import Clock from "@assets/svgs/clock.svg";
+import { Icon } from "astro-icon/components";
 
 import BaseLayout from "@layouts/BaseLayout.astro";
 import Banner from "@components/Banner.astro";
@@ -34,7 +30,7 @@ const optimizedImage = await getImage({ src: BannerImage, format: "avif" });
       <div class="info-grid">
         <div class="info-card">
           <div class="info-icon">
-            <Phone width={24} height={24} aria-hidden="true" />
+            <Icon name="mdi:phone" size={25} aria-hidden="true" />
           </div>
           <h3>Phone</h3>
           <p>Call us directly</p>
@@ -45,7 +41,7 @@ const optimizedImage = await getImage({ src: BannerImage, format: "avif" });
 
         <div class="info-card">
           <div class="info-icon">
-            <Email width={24} height={24} aria-hidden="true" />
+            <Icon name="mdi:email" size={25} aria-hidden="true" />
           </div>
           <h3>Email</h3>
           <p>Send us a message</p>
@@ -56,7 +52,7 @@ const optimizedImage = await getImage({ src: BannerImage, format: "avif" });
 
         <div class="info-card">
           <div class="info-icon">
-            <Pin width={24} height={24} aria-hidden="true" />
+            <Icon name="mdi:map-marker" size={30} aria-hidden="true" />
           </div>
           <h3>Address</h3>
           <p>Visit our office</p>
@@ -76,7 +72,7 @@ const optimizedImage = await getImage({ src: BannerImage, format: "avif" });
 
         <div class="info-card">
           <div class="info-icon">
-            <Clock width={24} height={24} aria-hidden="true" />
+            <Icon name="mdi:clock-time-four" size={25} aria-hidden="true" />
           </div>
           <h3>Business Hours</h3>
           <p>When we're available</p>
