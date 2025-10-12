@@ -150,12 +150,9 @@ const filteredHeadings = headings.filter((heading) => heading.depth <= levels);
   // Run on initial page load if on desktop
   if (isDesktop) initTOC();
 
-  // Re-run on view transitions navigation if on desktop
-  document.addEventListener("astro:after-swap", () => {
-    if (window.matchMedia("(min-width: 64rem)").matches) {
-      initTOC();
-    }
-  });
+  if (window.matchMedia("(min-width: 64rem)").matches) {
+    initTOC();
+  }
 
   // Listen for screen size changes
   window.matchMedia("(min-width: 64rem)").addEventListener("change", (e) => {
