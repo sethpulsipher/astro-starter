@@ -36,6 +36,9 @@ importers:
         specifier: ^5.6.3
         version: 5.9.2
     devDependencies:
+      netlify-plugin-cache:
+        specifier: ^1.0.3
+        version: 1.0.3
       prettier:
         specifier: ^3.0.0
         version: 3.6.2
@@ -1736,6 +1739,9 @@ packages:
   neotraverse@0.6.18:
     resolution: {integrity: sha512-Z4SmBUweYa09+o6pG+eASabEpP6QkQ70yHj351pQoEXIs8uHbaU2DWVmzBANKgflPa47A50PtB2+NgRpQvr7vA==}
     engines: {node: '>= 10'}
+
+  netlify-plugin-cache@1.0.3:
+    resolution: {integrity: sha512-CTOwNWrTOP59T6y6unxQNnp1WX702v2R/faR5peSH94ebrYfyY4zT5IsRcIiHKq57jXeyCrhy0GLuTN8ktzuQg==}
 
   nlcst-to-string@4.0.0:
     resolution: {integrity: sha512-YKLBCcUYKAg0FNlOBT6aI91qFmSiFKiluk655WzPF+DDMA02qIyy8uiRqI8QXtcFpEvll12LpL5MXqEmAZ+dcA==}
@@ -4466,6 +4472,8 @@ snapshots:
     optional: true
 
   neotraverse@0.6.18: {}
+
+  netlify-plugin-cache@1.0.3: {}
 
   nlcst-to-string@4.0.0:
     dependencies:
