@@ -1,4 +1,6 @@
 ---
+import { Icon } from "astro-icon/components";
+
 interface Props {
   title?: string;
   subtitle?: string;
@@ -30,7 +32,7 @@ const {
           id="name"
           name="name"
           required
-          placeholder="John Jacob Jingleheimer Schmidt"
+          placeholder="John Doe"
         />
       </div>
 
@@ -80,14 +82,7 @@ const {
       <div class="form-group full-width">
         <button type="submit" class="button-solid">
           Send Message
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-            <path
-              d="M8 1L15 8L8 15M15 8H1"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"></path>
-          </svg>
+          <Icon name="mdi:arrow-right" size={16} aria-hidden="true" />
         </button>
       </div>
     </form>
