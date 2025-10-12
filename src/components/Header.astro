@@ -43,14 +43,17 @@ import DarkModeToggle from "@components/DarkModeToggle.astro";
                 {entry.children?.length > 0 ? (
                   // If entry has children in navData.json, create a button and a dropdown icon
                   <span
+                    role="button"
                     aria-expanded="false"
+                    aria-controls={`submenu-${entry.key}`}
+                    aria-label="dropdown-label"
                     class:list={[
                       "li-link dropdown-button",
                       { active: Astro.url.pathname.includes(entry.url) },
                     ]}
                   >
                     {entry.key}
-                    <Icon name="dropdown" class="drop-icon" />
+                    <Icon name="mdi:caret-down" size={20} class="drop-icon" />
                   </span>
                 ) : (
                   // If entry does not have children in navData.json, create an anchor

@@ -92,6 +92,7 @@ This kit ships the following packages:
 
 - [Astro Icon](https://www.astroicon.dev/) - Astro Icon is a straightforward icon system for the Astro framework.
   - [Iconify](https://iconify.design/) - The open source **Icon Set Framework** used by Astro Icon
+  - [Icons](https://icon-sets.iconify.design/) - The list of icons able to use. By default, Material Design Icons are installed.
 - [Autoprefixer](https://www.npmjs.com/package/autoprefixer) - PostCSS plugin to parse CSS and add vendor prefixes to CSS rules using values from Can I Use. It is recommended by Google and used in many enterprise software like Twitter and Alibaba.
 - [LESS](https://www.npmjs.com/package/less) - Less makes a few convenient additions to the CSS language, but you can also simply write standard CSS if you wish.
 
