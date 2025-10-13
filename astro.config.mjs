@@ -8,6 +8,10 @@ export default defineConfig({
 
   integrations: [
     icon(),
-    sitemap(),
+    sitemap({
+      filter: (page) => !page.includes("/admin"),
+      changefreq: "weekly",
+      priority: 0.7,
+    }),
   ],
 });
