@@ -16,6 +16,7 @@ import "@styles/critical.less";
 // 2. Import the URL of the deferred styles. The "?url" suffix tells
 // Astro to process the file but just give us the final path to it.
 import localStylesURL from "@styles/local.less?url";
+import { Icon } from "astro-icon/components";
 ---
 
 <BaseLayout
@@ -86,15 +87,7 @@ import localStylesURL from "@styles/local.less?url";
     <ul class="card-group">
       <li class="item">
         <picture class="icon">
-          <img
-            loading="lazy"
-            decoding="async"
-            src="/assets/svgs/s1.svg"
-            alt="icon"
-            width="52"
-            height="52"
-            aria-hidden="true"
-          />
+          <Icon name="mdi:briefcase" size={52} aria-hidden="true" />
         </picture>
         <h2 class="title">Service 1</h2>
         <p class="text">
@@ -104,15 +97,7 @@ import localStylesURL from "@styles/local.less?url";
       </li>
       <li class="item">
         <picture class="icon">
-          <img
-            loading="lazy"
-            decoding="async"
-            src="/assets/svgs/s2.svg"
-            alt="icon"
-            width="52"
-            height="52"
-            aria-hidden="true"
-          />
+          <Icon name="mdi:home-city" size={52} aria-hidden="true" />
         </picture>
         <h2 class="title">Service 2</h2>
         <p class="text">
@@ -122,15 +107,7 @@ import localStylesURL from "@styles/local.less?url";
       </li>
       <li class="item">
         <picture class="icon">
-          <img
-            loading="lazy"
-            decoding="async"
-            src="/assets/svgs/s3.svg"
-            alt="icon"
-            width="52"
-            height="52"
-            aria-hidden="true"
-          />
+          <Icon name="mdi:gear" size={52} aria-hidden="true" />
         </picture>
         <h2 class="title">Service 3</h2>
         <p class="text">
@@ -140,15 +117,7 @@ import localStylesURL from "@styles/local.less?url";
       </li>
       <li class="item">
         <picture class="icon">
-          <img
-            loading="lazy"
-            decoding="async"
-            src="/assets/svgs/s4.svg"
-            alt="icon"
-            width="52"
-            height="52"
-            aria-hidden="true"
-          />
+          <Icon name="mdi:person" size={52} aria-hidden="true" />
         </picture>
         <h2 class="title">Service 4</h2>
         <p class="text">
