@@ -1,7 +1,9 @@
 ---
+//Components
 import BaseLayout from "@layouts/BaseLayout.astro";
-import CTA from "@components/CTA.astro";
-import FAQ from "@components/FAQ.astro";
+import Button from "@components/Button.astro";
+import FAQ from "@sections/FAQ.astro";
+import CTA from "@sections/CTA.astro";
 
 import client from "@data/client.json";
 
@@ -13,9 +15,7 @@ const optimizedHeroImg = await getImage({ src: heroImg, format: "avif" });
 // 1. Import critical styles directly. Astro will bundle and inject these
 // as a blocking <link> tag in the <head>, which is exactly what you want
 import "@styles/critical.less";
-// 2. Import the URL of the deferred styles. The "?url" suffix tells
-// Astro to process the file but just give us the final path to it.
-import localStylesURL from "@styles/local.less?url";
+import localStyles_URL from "@styles/local.less?url";
 import { Icon } from "astro-icon/components";
 ---
 
@@ -31,16 +31,16 @@ import { Icon } from "astro-icon/components";
           {/* PRODUCTION: Preload the main stylesheet to load it without blocking rendering */}
           <link
             rel="preload"
-            href={localStylesURL}
+            href={localStyles_URL}
             as="style"
             onload="this.onload=null;this.rel='stylesheet'"
           />
           <noscript>
-            <link rel="stylesheet" href={localStylesURL} />
+            <link rel="stylesheet" href={localStyles_URL} />
           </noscript>
         </>
       ) : (
-        <link rel="stylesheet" href={localStylesURL} />
+        <link rel="stylesheet" href={localStyles_URL} />
       )
     }
 
@@ -61,7 +61,7 @@ import { Icon } from "astro-icon/components";
         Be more descriptive of the services and solutions the company / business
         offers related to the h1
       </p>
-      <a href="/contact/" class="button-solid">Get in Touch</a>
+      <Button href="/contact/" class="button-solid">Get in Touch</Button>
     </div>
 
     <picture class="background">
