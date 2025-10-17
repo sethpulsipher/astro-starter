@@ -1,0 +1,27 @@
+---
+import { Icon } from "astro-icon/components";
+import type { HTMLAttributes } from "astro/types";
+
+// Anchor tag when theres no 'type' attribute present
+type AnchorProps = HTMLAttributes<"a"> & { type?: never };
+// Button tag when theres no 'href' attribute present
+type ButtonProps = HTMLAttributes<"button"> & { href?: never };
+
+// Only an anchor or a button can be passed, not both
+type Props = AnchorProps | ButtonProps;
+
+const { href, class: className, ...rest } = Astro.props as Props;
+---
+
+{
+  href ? (
+    <a href={href} class:list={["", className]} {...rest}>
+      <slot />
+      {/* <Icon name="mdi:arrow-right-thin" aria-hidden="true" size={25} /> */}
+    </a>
+  ) : (
+    <button class:list={["", className]} {...rest}>
+      <slot />
+    </button>
+  )
+}
